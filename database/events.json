@@ -1,0 +1,26 @@
+{
+  "event1": {
+    "date": "June 6, 2019",
+    "name": "Suzan's Birthday Party",
+    "location": "Beverly Hills",
+    "uid": "1234"
+  },
+  "event2": {
+    "date": "May 29, 2019",
+    "name": "Coldplay Concert",
+    "location": "Seattle",
+    "uid": "1234"
+  },
+  "event3": {
+    "date": "February 21, 2019",
+    "name": "Aunt Bessy's Wedding",
+    "location": "Mama's Backyard",
+    "uid": "1234"
+  },
+  "event4": {
+    "date": "February 21, 2019",
+    "name": "Drag Race",
+    "location": "Tokyo",
+    "uid": "1234"
+  }
+}
