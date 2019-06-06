@@ -1,0 +1,26 @@
+{
+  "diaryEntry1": {
+    "date": "June 6, 2019",
+    "title": "Seed Data",
+    "entryBody": "Dear Diary, this is some seed data",
+    "uid": "1234"
+  },
+  "diaryEntry2": {
+    "date": "May 29, 2019",
+    "title": "Seed Data",
+    "entryBody": "Dear Diary, this is some more seed data",
+    "uid": "1234"
+  },
+  "diaryEntry3": {
+    "date": "February 21, 2019",
+    "title": "seed data",
+    "entryBody": "Dear Diary, this is more seed data but the title is all lower case",
+    "uid": "1234"
+  },
+  "diaryEntry4": {
+    "date": "February 21, 2019",
+    "title": "sEED dATA",
+    "entryBody": "Dear Diary, I hate doing seed data! Ahhhhhhh!",
+    "uid": "1234"
+  }
+}
