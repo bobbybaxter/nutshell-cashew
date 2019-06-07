@@ -2,12 +2,12 @@
   "event1": {
     "message": "hey this is a test message",
     "timeStamp": "June 1st 2019, 3:18:03 pm",
-    "uid": "1234"
+    "uid": "F5iv5SelDnQX1zr5OiOXpX5jzzq1"
   },
   "event2": {
     "message": "hello this is another test message",
     "timeStamp": "January 6th 2019, 3:18:03 pm",
-    "uid": "1234"
+    "uid": "jihzYaHrghP1AnZYcBHXwHwwkOM2"
   },
   "event3": {
     "message": "stop writing test messages!",
