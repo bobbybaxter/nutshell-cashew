@@ -2,25 +2,25 @@ import $ from 'jquery';
 import diary from '../diary/diary';
 
 const hideAll = () => {
-  $('#auth').hide();
-  $('#userNameModalDiv').hide();
-  $('.authed-diary').hide();
+  $('#auth').addClass('hide');
+  $('#userNameModalDiv').addClass('hide');
+  $('.authed-diary').addClass('hide');
 };
 
 const showDiary = () => {
   hideAll();
   diary.initDiary();
-  $('.authed-diary').show();
+  $('.authed-diary').removeClass('hide');
 };
 
 const showHome = () => {
   hideAll();
-  $('#userNameModalDiv').show();
+  $('#userNameModalDiv').removeClass('hide');
 };
 
 const showAuth = () => {
   hideAll();
-  $('#auth').show();
+  $('#auth').removeClass('hide');
 };
 
 const attachSideNavEvents = () => {
