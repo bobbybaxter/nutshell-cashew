@@ -1,4 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '../javascripts/components/navbars/navbars.scss';
 
 body {
   background-color: aliceblue;
