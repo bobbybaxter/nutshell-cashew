@@ -3,7 +3,7 @@ import firebase from 'firebase/app';
 import auth from './components/auth/auth';
 
 import apiKeys from './helpers/apiKeys.json';
-
+import 'bootstrap';
 import '../styles/main.scss';
 import navbar from './components/navbars/top-navbar';
 import authData from './helpers/data/auth-data';
