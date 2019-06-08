@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cashew Outside</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Cashew Outside</title>
 </head>
 
 <body>
-  <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Nutshell-Cashew</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a id="navbar-button-auth" class="nav-link">Authentication</a>
-          </li>
-          <li class="nav-item">
-            <a id="navbar-button-movie-history" class="nav-link hide">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <button type="button" id="navbar-button-diary" class="nav-link hide">Diary</button>
-          </li>
-          <li class="nav-item">
-            <a id="navbar-button-logout" class="nav-link hide">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+  <nav id="navbar" class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap py-0 shadow top-navbar">
+    <a class="navbar-brand" href="#">Cashew Outside</a>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <button type="button" id="navbar-button-auth"
+          class="nav-link btn btn-outline-dark col-12">Authentication</button>
+      </li>
+      <li class="nav-item text-nowrap">
+        <button type="button" id="navbar-button-logout"
+          class="nav-link btn btn-outline-dark col-12 hide">Logout</button>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <button type="button" id="navbar-button-home"
+                class="nav-link btn btn-outline-dark col-12 hide">Dashboard</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" id="navbar-button-diary"
+                class="nav-link btn btn-outline-dark col-12 hide">Diary</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div id="auth"></div>
+        <!-- Start of user name modal div -->
+        <div id="userNameModalDiv">
+          <!-- Button trigger modal -->
+          <button type="button" id="userNameModalOpen" class="hide btn btn-primary" data-toggle="modal"
+            data-target="#userNameModal">
+            Create User Name
+          </button>
 
-  <div id="auth"></div>
-
-  <!-- Start of user name modal div -->
-  <div id="userNameModalDiv">
-    <!-- Button trigger modal -->
-    <button type="button" id="userNameModalOpen" class="hide btn btn-primary" data-toggle="modal"
-      data-target="#userNameModal">
-      Create User Name
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="userNameModal" tabindex="-1" role="dialog" aria-labelledby="userNameModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="userNameModalLabel">Create Your User Name</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="userNameInput">Create User Name</label>
-                <input type="text" class="form-control" id="userNameInput" placeholder="user1234*5">
+          <!-- Modal -->
+          <div class="modal fade" id="userNameModal" tabindex="-1" role="dialog" aria-labelledby="userNameModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="userNameModalLabel">Create Your User Name</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="userNameInput">Create User Name</label>
+                      <input type="text" class="form-control" id="userNameInput" placeholder="user1234*5">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="saveUserNameBtn" class="btn btn-primary">Save User Name</button>
+                </div>
               </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" id="saveUserNameBtn" class="btn btn-primary">Save User Name</button>
+            </div>
           </div>
         </div>
-      </div>
+        <!-- End of user name modal -->
+
+        <div class="hide" id="homePageDiv">
+          </ <div id="diary" class="p-5">
+          <div id="diary-entries" class="d-flex flex-wrap"></div>
+        </div>
+      </main>
     </div>
   </div>
-  <!-- End of user name modal -->
-
-  <div class="hide" id="homePageDiv"></div>
-
-  <div id="diary" class="p-5">
-    <div id="diary-entries" class="d-flex flex-wrap"></div>
-  </div>
-  >>>>>>> master
 </body>
-
-</html>
 
 </html>

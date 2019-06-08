@@ -5,7 +5,7 @@ import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
 
-const movieNavbar = document.getElementById('navbar-button-movie-history');
+const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
@@ -24,7 +24,7 @@ const printHomePage = (userId) => {
 };
 
 const loginHomeView = (userId) => {
-  movieNavbar.classList.remove('hide');
+  homeNavbar.classList.remove('hide');
   authNavbar.classList.add('hide');
   logoutNavbar.classList.remove('hide');
   authDiv.classList.add('hide');
@@ -54,7 +54,7 @@ const checkLoginStatus = () => {
         })
         .catch(error => console.error('could not get users array', error));
     } else {
-      movieNavbar.classList.add('hide');
+      homeNavbar.classList.add('hide');
       authNavbar.classList.remove('hide');
       logoutNavbar.classList.add('hide');
       authDiv.classList.remove('hide');
