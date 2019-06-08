@@ -1,0 +1,10 @@
+{
+  "user1": {
+"uid": "anonymousUser1",
+"userName": "anonymousUser"
+  },
+  "user2": {
+    "uid": "anonymousUser2",
+    "userName": "anonymousUser"
+      }
+}
