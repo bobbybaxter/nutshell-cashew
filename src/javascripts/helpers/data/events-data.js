@@ -4,8 +4,8 @@ import apiKeys from '../apiKeys.json';
 
 const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getEvents = () => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/events.json`)
+const getEventsByUid = uid => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/events.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
       const eventsResults = results.data;
       const events = [];
@@ -18,4 +18,4 @@ const getEvents = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { getEvents };
+export default { getEventsByUid };
