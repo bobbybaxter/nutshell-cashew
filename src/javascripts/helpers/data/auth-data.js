@@ -4,6 +4,7 @@ import diary from '../../components/diary/diary';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
+import messagesFunctions from '../../components/messages/messages';
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
@@ -12,6 +13,7 @@ const diaryNav = document.getElementById('navbar-button-diary');
 const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalOpen');
 const homePageDiv = document.getElementById('homePageDiv');
+const messagesNavBar = document.getElementById('navbar-button-messages');
 
 const printHomePage = (userId) => {
   usersData.getUsersArray()
@@ -32,6 +34,8 @@ const loginHomeView = (userId) => {
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
   diaryNav.addEventListener('click', diary.initDiary);
+  messagesNavBar.classList.remove('hide');
+  messagesNavBar.addEventListener('click', messagesFunctions.initMessages);
   printHomePage(userId);
 };
 
