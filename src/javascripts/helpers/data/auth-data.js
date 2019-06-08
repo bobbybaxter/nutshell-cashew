@@ -44,6 +44,8 @@ const checkLoginStatus = () => {
           if (matchingUser) {
             loginHomeView(user);
           } else {
+            authDiv.classList.add('hide');
+            authNavbar.classList.add('hide');
             userNameOpenButton.classList.remove('hide');
             document.getElementById('saveUserNameBtn').addEventListener('click', () => {
               usersFunctions.addUserName(user)
