@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import diary from '../../components/diary/diary';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
@@ -7,6 +8,7 @@ import util from '../util';
 const movieNavbar = document.getElementById('navbar-button-movie-history');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
+const diaryNav = document.getElementById('navbar-button-diary');
 const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalOpen');
 const homePageDiv = document.getElementById('homePageDiv');
@@ -28,6 +30,8 @@ const loginHomeView = (userId) => {
   authDiv.classList.add('hide');
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
+  diaryNav.classList.remove('hide');
+  diaryNav.addEventListener('click', diary.initDiary);
   printHomePage(userId);
 };
 
@@ -54,6 +58,8 @@ const checkLoginStatus = () => {
       authNavbar.classList.remove('hide');
       logoutNavbar.classList.add('hide');
       authDiv.classList.remove('hide');
+      diaryNav.classList.add('hide');
+      homePageDiv.classList.add('hide');
     }
   });
 };
