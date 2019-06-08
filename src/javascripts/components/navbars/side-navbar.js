@@ -2,7 +2,9 @@ import $ from 'jquery';
 import diary from '../diary/diary';
 
 const hideAll = () => {
-  // add your div here and hide it
+  $('#auth').hide();
+  $('#userNameModalDiv').hide();
+  $('.authed-diary').hide();
 };
 
 const showDiary = () => {
@@ -11,8 +13,14 @@ const showDiary = () => {
   $('.authed-diary').show();
 };
 
+const showHome = () => {
+  hideAll();
+  $('#userNameModalDiv').show();
+};
+
 const attachSideNavEvents = () => {
   $('#navbar-button-diary').click(showDiary);
+  $('#navbar-button-home').click(showHome);
 };
 
 export default { attachSideNavEvents };

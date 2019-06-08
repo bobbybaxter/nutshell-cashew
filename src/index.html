@@ -7,7 +7,8 @@
     <title>Cashew Outside</title>
   </head>
   <body>
-    <nav id="navbar" class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap py-0 shadow top-navbar">
+
+    <nav id="navbar" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap py-0 shadow top-navbar">
       <a class="navbar-brand" href="#">Cashew Outside</a>
       <ul class="navbar-nav flex-row px-3">
         <li class="nav-item text-nowrap">
@@ -21,7 +22,10 @@
         </li>
       </ul>
     </nav>
-    <div class="container-fluid">
+
+    <div class="container-fluid"><!-- main container -->
+
+      <!-- side navbar -->
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
@@ -35,35 +39,75 @@
             </ul>
           </div>
         </nav>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <div id="auth"></div>
-          <div id="diary" class="authed-diary p-5 hide">
-            <div id="diary-entries" class="d-flex flex-wrap"></div>
-          </div>
-        </main>
-      </div>
-    </div>
 
-    <!-- add diary entry modal -->
-    <div class="modal" id="add-entry-form">
-      <div class="modal-dialog">
-        <div class="modal-content rounded-0 border-0">
-          <div class="modal-header border-0 pb-0">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
-              <i class="fas fa-times"></i>
-            </button>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><!-- app container -->
+          <div id="auth"></div>
+
+          <!-- Start of user name modal div -->
+          <div id="userNameModalDiv">
+              <!-- Button trigger modal -->
+            <button type="button" id="userNameModalOpen" class="hide btn btn-primary" data-toggle="modal" data-target="#userNameModal">Create User Name</button>
+            <div class="hide" id="homePageDiv"></div>
           </div>
-          <h1 class="display-4 m-auto">Add Entry</h1>
-          <div class="modal-body">
-            <input id="diary-title-input" type="text" class="form-control my-3" placeholder="Title">
-            <input id="diary-date-input" type="text" class="form-control mb-3" placeholder="Date">
-            <input id="diary-entry-input" type="text" class="form-control" placeholder="Diary Entry">
+
+          <div id="diary" class="authed-diary p-5 hide">
+            <div id="diary-entries" class="d-flex flex-column"></div>
           </div>
-          <div class="modal-footer justify-content-center border-0">
-            <button id="add-diary-entry" type="button" class="btn btn-dark rounded-0 px-4" data-dismiss="modal">Save Diary Entry</button>
+
+        </main><!-- end app container -->
+
+      </div><!-- end main container -->
+
+      <!-- add diary entry modal -->
+      <div class="modal" id="add-entry-form">
+        <div class="modal-dialog">
+          <div class="modal-content rounded-0 border-0">
+            <div class="modal-header border-0 pb-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <h1 class="display-4 m-auto">Add Entry</h1>
+            <div class="modal-body">
+              <input id="diary-title-input" type="text" class="form-control my-3" placeholder="Title">
+              <input id="diary-date-input" type="text" class="form-control mb-3" placeholder="Date">
+              <input id="diary-entry-input" type="text" class="form-control" placeholder="Diary Entry">
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+              <button id="add-diary-entry" type="button" class="btn btn-dark rounded-0 px-4" data-dismiss="modal">Save Diary Entry</button>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- user name modal -->
+      <div class="modal fade" id="userNameModal" tabindex="-1" role="dialog" aria-labelledby="userNameModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="userNameModalLabel">Create Your User Name</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="userNameInput">Create User Name</label>
+                  <input type="text" class="form-control" id="userNameInput" placeholder="user1234*5">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" id="saveUserNameBtn" class="btn btn-primary">Save User Name</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </body>
+
+</body>
+
 </html>
