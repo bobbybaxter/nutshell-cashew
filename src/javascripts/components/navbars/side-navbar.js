@@ -18,9 +18,15 @@ const showHome = () => {
   $('#userNameModalDiv').show();
 };
 
+const showAuth = () => {
+  hideAll();
+  $('#auth').show();
+};
+
 const attachSideNavEvents = () => {
   $('#navbar-button-diary').click(showDiary);
   $('#navbar-button-home').click(showHome);
+  $('#navbar-button-logout').click(showAuth);
 };
 
 export default { attachSideNavEvents };

@@ -2,7 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import sideNav from '../../components/navbars/side-navbar';
-import diary from '../../components/diary/diary';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
@@ -33,7 +32,6 @@ const loginHomeView = (userId) => {
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
-  diaryNav.addEventListener('click', diary.initDiary);
   printHomePage(userId);
 };
 
@@ -65,6 +63,7 @@ const checkLoginStatus = () => {
       authDiv.classList.remove('hide');
       diaryNav.classList.add('hide');
       homePageDiv.classList.add('hide');
+      diaryNav.classList.add('hide');
     }
   });
 };
