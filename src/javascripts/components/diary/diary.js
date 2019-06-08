@@ -1,8 +1,26 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import $ from 'jquery';
+
 import util from '../../helpers/util';
 import diaryData from '../../helpers/data/diary-data';
+
+import './diary.scss';
+
+const addDiaryEntry = () => {
+  const newEntry = {
+    title: $('#diary-title-input').val(),
+    date: $('#diary-date-input').val(),
+    entryBody: $('#diary-entry-input').val(),
+    uid: firebase.auth().currentUser.uid,
+  };
+  diaryData.addDiaryEntry(newEntry)
+    .then(() => {
+      initDiary(); // eslint-disable-line no-use-before-define
+    })
+    .catch(error => console.error(error));
+};
 
 const writeDiaryEntries = (diaryEntries) => {
   let domString = '';
@@ -20,6 +38,7 @@ const writeDiaryEntries = (diaryEntries) => {
 };
 
 const initDiary = () => {
+  $('#add-diary-entry').click(addDiaryEntry);
   const { uid } = firebase.auth().currentUser;
   diaryData.getDiaryEntriesByUid(uid)
     .then((diaryEntries) => {

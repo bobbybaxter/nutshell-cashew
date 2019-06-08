@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import diary from '../../components/diary/diary';
+import sideNav from '../../components/navbars/side-navbar';
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
@@ -17,7 +17,7 @@ const checkLoginStatus = () => {
       logoutNavbar.classList.remove('hide');
       authDiv.classList.add('hide');
       diaryNav.classList.remove('hide');
-      diaryNav.addEventListener('click', diary.initDiary);
+      sideNav.attachSideNavEvents();
     } else {
       homeNavbar.classList.add('hide');
       authNavbar.classList.remove('hide');
