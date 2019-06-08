@@ -11,7 +11,7 @@ const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
 const authDiv = document.getElementById('auth');
-const userNameOpenButton = document.getElementById('userNameModalOpen');
+const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 
 const printHomePage = (userId) => {

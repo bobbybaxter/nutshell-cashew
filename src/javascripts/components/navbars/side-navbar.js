@@ -3,7 +3,8 @@ import diary from '../diary/diary';
 
 const hideAll = () => {
   $('#auth').addClass('hide');
-  $('#userNameModalDiv').addClass('hide');
+  $('#userNameModalBtnDiv').addClass('hide');
+  $('#homePageDiv').addClass('hide');
   $('.authed-diary').addClass('hide');
 };
 
@@ -15,7 +16,7 @@ const showDiary = () => {
 
 const showHome = () => {
   hideAll();
-  $('#userNameModalDiv').removeClass('hide');
+  $('#homePageDiv').removeClass('hide');
 };
 
 const showAuth = () => {

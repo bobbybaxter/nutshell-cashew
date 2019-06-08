@@ -38,7 +38,7 @@ const writeDiaryEntries = (diaryEntries) => {
 };
 
 const initDiary = () => {
-  $('#add-diary-entry').click(addDiaryEntry);
+  document.getElementById('add-diary-entry').addEventListener('click', addDiaryEntry);
   const { uid } = firebase.auth().currentUser;
   diaryData.getDiaryEntriesByUid(uid)
     .then((diaryEntries) => {
