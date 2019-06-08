@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cashew Outside</title>
-</head>
-
-<body>
-  <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Nutshell-Cashew</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a id="navbar-button-auth" class="nav-link">Authentication</a>
-            </li>
-            <li class="nav-item">
-              <a id="navbar-button-movie-history" class="nav-link hide">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <button type="button" id="navbar-button-diary" class="nav-link hide">Diary</button>
-            </li>
-            <li class="nav-item">
-              <a id="navbar-button-logout" class="nav-link hide">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-</div>
-
-<div id="auth"></div>
-
-<div id="diary" class="p-5">
-  <div id="diary-entries" class="d-flex flex-wrap"></div>
-</div>
-</body>
-
-</html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cashew Outside</title>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap py-0 shadow top-navbar">
+      <a class="navbar-brand" href="#">Cashew Outside</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <button type="button" id="navbar-button-auth" class="nav-link btn btn-outline-dark col-12">Authentication</button>
+        </li>
+        <li class="nav-item text-nowrap">
+          <button type="button" id="navbar-button-logout" class="nav-link btn btn-outline-dark col-12 hide">Logout</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <button type="button" id="navbar-button-home" class="nav-link btn btn-outline-dark col-12 hide">Dashboard</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" id="navbar-button-diary" class="nav-link btn btn-outline-dark col-12 hide">Diary</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div id="auth"></div>
+          <div id="diary" class="p-5">
+            <div id="diary-entries" class="d-flex flex-wrap"></div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
