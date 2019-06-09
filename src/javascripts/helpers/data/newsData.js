@@ -10,7 +10,7 @@ const getNewsByUid = uid => new Promise((resolve, reject) => {
       const news = [];
       Object.keys(newsResults).forEach((newsId) => {
         newsResults[newsId].id = newsId;
-        newsId.push(newsResults[newsId]);
+        news.push(newsResults[newsId]);
       });
       resolve(news);
     })
