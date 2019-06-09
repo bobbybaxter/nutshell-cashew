@@ -3,6 +3,8 @@ import fbref from '../apiKeys.json';
 
 const firebaseUrl = fbref.firebaseKeys.databaseURL;
 
+const addDiaryEntry = newEntry => axios.post(`${firebaseUrl}/diaryEntries.json`, newEntry);
+
 const getDiaryEntriesByUid = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/diaryEntries.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
@@ -17,4 +19,4 @@ const getDiaryEntriesByUid = uid => new Promise((resolve, reject) => {
     .catch(error => reject(error));
 });
 
-export default { getDiaryEntriesByUid };
+export default { getDiaryEntriesByUid, addDiaryEntry };
