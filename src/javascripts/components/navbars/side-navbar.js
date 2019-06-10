@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import diary from '../diary/diary';
+import events from '../events/events';
 import news from '../news/news';
 
 const hideAll = () => {
@@ -7,7 +8,14 @@ const hideAll = () => {
   $('#userNameModalBtnDiv').addClass('hide');
   $('#homePageDiv').addClass('hide');
   $('.authed-diary').addClass('hide');
+  $('.events').addClass('hide');
   $('.authed-news').addClass('hide');
+};
+
+const showEvents = () => {
+  hideAll();
+  events.initEvents();
+  $('.events').removeClass('hide');
 };
 
 const showDiary = () => {
@@ -33,6 +41,7 @@ const showAuth = () => {
 };
 
 const attachSideNavEvents = () => {
+  $('#navbar-button-events').click(showEvents);
   $('#navbar-button-diary').click(showDiary);
   $('#navbar-button-news').click(showNews);
   $('#navbar-button-home').click(showHome);
