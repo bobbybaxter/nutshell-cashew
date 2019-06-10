@@ -10,7 +10,11 @@ const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
+<<<<<<< HEAD
 const eventsNav = document.getElementById('navbar-button-events');
+=======
+const newsNav = document.getElementById('navbar-button-news');
+>>>>>>> master
 const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
@@ -33,7 +37,11 @@ const loginHomeView = (userId) => {
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
+<<<<<<< HEAD
   eventsNav.classList.remove('hide');
+=======
+  newsNav.classList.remove('hide');
+>>>>>>> master
   printHomePage(userId);
 };
 
