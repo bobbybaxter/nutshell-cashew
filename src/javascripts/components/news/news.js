@@ -22,6 +22,7 @@ const newsCardBuilder = (newsArticles) => {
     domString += `<div>${newsArticle.date}</div>`;
     domString += `<div>${newsArticle.synopsis}</div>`;
     domString += `<button id=${newsArticle.newsUrl} class="btn btn-warning news-article-link">View Article</button>`;
+    domString += `<button id="delete.${newsArticle.id}" class="btn btn-danger delete-news-button">Delete Article</button>`;
     domString += '</div>';
     domString += '</div>';
     domString += '</div>';
@@ -30,6 +31,7 @@ const newsCardBuilder = (newsArticles) => {
   domString += '</div>';
   util.printToDom('news-articles', domString);
   $('.news-article-link').click(newsCardEvents);
+  $('.delete-news-button').click(deleteNews); // eslint-disable-line no-use-before-define
 };
 
 const addNewArticle = () => {
@@ -41,6 +43,15 @@ const addNewArticle = () => {
     uid: firebase.auth().currentUser.uid,
   };
   newsData.addNews(newsObject)
+    .then(() => {
+      initNews(); // eslint-disable-line no-use-before-define
+    });
+};
+
+const deleteNews = (e) => {
+  const newsId = e.target.id.split('.')[1];
+  console.error(newsId);
+  newsData.deleteNews(newsId)
     .then(() => {
       initNews(); // eslint-disable-line no-use-before-define
     });
