@@ -12,6 +12,8 @@ const newsCardEvents = (e) => {
 
 const newsCardBuilder = (newsArticles) => {
   let domString = '';
+  domString += '<div class="container">'; // cards no longer appearing off screen
+  domString += '<div class="row">';
   newsArticles.forEach((newsArticle) => {
     domString += '<div id="news-card" class="col-sm-12 col-md-6 col-lg-3">';
     domString += '<div class="card news-card">';
@@ -24,11 +26,28 @@ const newsCardBuilder = (newsArticles) => {
     domString += '</div>';
     domString += '</div>';
   });
+  domString += '</div>';
+  domString += '</div>';
   util.printToDom('news-articles', domString);
   $('.news-article-link').click(newsCardEvents);
 };
 
+const addNewArticle = () => {
+  const newsObject = {
+    date: document.getElementById('article-date-input').value,
+    newsUrl: document.getElementById('article-url-input').value,
+    synopsis: document.getElementById('article-synopsis-input').value,
+    title: document.getElementById('article-title-input').value,
+    uid: firebase.auth().currentUser.uid,
+  };
+  newsData.addNews(newsObject)
+    .then(() => {
+      initNews(); // eslint-disable-line no-use-before-define
+    });
+};
+
 const initNews = () => {
+  $('#add-news-article').click(addNewArticle);
   const { uid } = firebase.auth().currentUser;
   newsData.getNewsByUid(uid)
     .then((newsArticles) => {
@@ -36,7 +55,5 @@ const initNews = () => {
     })
     .catch(error => console.error(error));
 };
-
-// onclick="window.location.href = '${newsArticle.newsUrl}'"
 
 export default { initNews };
