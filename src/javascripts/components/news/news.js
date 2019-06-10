@@ -11,6 +11,7 @@ const newsCardEvents = (e) => {
 };
 
 const newsCardBuilder = (newsArticles) => {
+  console.error(newsArticles);
   let domString = '';
   domString += '<div class="container">'; // cards no longer appearing off screen
   domString += '<div class="row">';
