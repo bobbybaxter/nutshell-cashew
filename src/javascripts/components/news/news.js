@@ -12,7 +12,7 @@ const newsCardEvents = (e) => {
 
 const newsCardBuilder = (newsArticles) => {
   let domString = '';
-  domString += '<div class="container">';
+  domString += '<div class="container">'; // cards no longer appearing off screen
   domString += '<div class="row">';
   newsArticles.forEach((newsArticle) => {
     domString += '<div id="news-card" class="col-sm-12 col-md-6 col-lg-3">';
