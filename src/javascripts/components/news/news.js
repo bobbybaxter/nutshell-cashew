@@ -12,7 +12,7 @@ const newsCardEvents = (e) => {
 
 const newsCardBuilder = (newsArticles) => {
   let domString = '';
-  domString += '<div class="container">'; // cards no longer appearing off screen
+  domString += '<div class="container">';
   domString += '<div class="row">';
   newsArticles.forEach((newsArticle) => {
     domString += '<div id="news-card" class="col-sm-12 col-md-6 col-lg-3">';
@@ -50,7 +50,6 @@ const addNewArticle = () => {
 
 const deleteNews = (e) => {
   const newsId = e.target.id.split('.')[1];
-  console.error(newsId);
   newsData.deleteNews(newsId)
     .then(() => {
       initNews(); // eslint-disable-line no-use-before-define
@@ -58,7 +57,7 @@ const deleteNews = (e) => {
 };
 
 const initNews = () => {
-  $('#add-news-article').click(addNewArticle);
+  document.getElementById('add-news-article').addEventListener('click', addNewArticle);
   const { uid } = firebase.auth().currentUser;
   newsData.getNewsByUid(uid)
     .then((newsArticles) => {
