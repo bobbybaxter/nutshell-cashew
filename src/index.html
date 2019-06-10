@@ -8,7 +8,7 @@
   </head>
   <body>
 
-    <nav id="navbar" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap py-0 shadow top-navbar">
+    <nav id="navbar" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap py-1 shadow top-navbar">
       <a class="navbar-brand" href="#">Cashew Outside</a>
       <ul class="navbar-nav flex-row px-3">
         <li class="nav-item text-nowrap">
@@ -30,22 +30,25 @@
 
       <!-- side navbar -->
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-2 d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <button type="button" id="navbar-button-home" class="nav-link btn btn-outline-dark col-12 hide">Dashboard</button>
+                <button type="button" id="navbar-button-home" class="nav-link btn btn-outline-dark hide">Dashboard</button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-diary" class="nav-link btn btn-outline-dark col-12 hide">Diary</button>
+                <button type="button" id="navbar-button-diary" class="nav-link btn btn-outline-dark hide">Diary</button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-news" class="nav-link btn btn-outline-dark col-12 hide">News</button>
+                <button type="button" id="navbar-button-events" class="nav-link btn btn-outline-dark hide">Events</button>
+              </li>
+              <li class="nav-item">
+                <button type="button" id="navbar-button-news" class="nav-link btn btn-outline-dark hide">News</button>
               </li>
             </ul>
           </div>
         </nav>
-
+        
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><!-- app container -->
           <div id="auth"></div>
 
@@ -59,6 +62,11 @@
           
           <div id="diary" class="authed-diary p-5 hide">
             <div id="diary-entries" class="d-flex flex-column"></div>
+          </div>
+
+          <div id="eventsContainer" class="events p-5 hide">
+            <h1 class="text-center">Events</h1>
+            <div id="events" class="d-flex flex-wrap flex-column"></div>
           </div>
 
           <div id="news" class="authed-news hide">
@@ -141,6 +149,6 @@
 
     </div>
 
-</body>
+  </body>
 
 </html>
