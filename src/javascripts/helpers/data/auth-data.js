@@ -1,17 +1,19 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import diary from '../../components/diary/diary';
+
+import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
-import messagesFunctions from '../../components/messages/messages';
+// import messagesFunctions from '../../components/messages/messages';
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
+const newsNav = document.getElementById('navbar-button-news');
 const authDiv = document.getElementById('auth');
-const userNameOpenButton = document.getElementById('userNameModalOpen');
+const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
 
@@ -33,15 +35,15 @@ const loginHomeView = (userId) => {
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
-  diaryNav.addEventListener('click', diary.initDiary);
   messagesNavBar.classList.remove('hide');
-  messagesNavBar.addEventListener('click', messagesFunctions.initMessages);
+  newsNav.classList.remove('hide');
   printHomePage(userId);
 };
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      sideNav.attachSideNavEvents();
       usersData.getUsersArray()
         .then((users) => {
           const matchingUser = users.find(u => u.uid === user.uid);
@@ -66,6 +68,7 @@ const checkLoginStatus = () => {
       authDiv.classList.remove('hide');
       diaryNav.classList.add('hide');
       homePageDiv.classList.add('hide');
+      diaryNav.classList.add('hide');
     }
   });
 };
