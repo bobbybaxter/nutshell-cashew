@@ -1,24 +1,17 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-<<<<<<< HEAD
-import diary from '../../components/diary/diary';
-import events from '../../components/events/events';
-=======
 import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
->>>>>>> master
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
-const authDiv = document.getElementById('auth');
-<<<<<<< HEAD
 const eventsNav = document.getElementById('navbar-button-events');
-=======
+const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 
@@ -40,23 +33,13 @@ const loginHomeView = (userId) => {
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
+  eventsNav.classList.remove('hide');
   printHomePage(userId);
 };
->>>>>>> master
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-<<<<<<< HEAD
-      homeNavbar.classList.remove('hide');
-      authNavbar.classList.add('hide');
-      logoutNavbar.classList.remove('hide');
-      authDiv.classList.add('hide');
-      diaryNav.classList.remove('hide');
-      eventsNav.classList.remove('hide');
-      diaryNav.addEventListener('click', diary.initDiary);
-      eventsNav.addEventListener('click', events.initEvents);
-=======
       sideNav.attachSideNavEvents();
       usersData.getUsersArray()
         .then((users) => {
@@ -75,19 +58,14 @@ const checkLoginStatus = () => {
           }
         })
         .catch(error => console.error('could not get users array', error));
->>>>>>> master
     } else {
       homeNavbar.classList.add('hide');
       authNavbar.classList.remove('hide');
       logoutNavbar.classList.add('hide');
       authDiv.classList.remove('hide');
       diaryNav.classList.add('hide');
-<<<<<<< HEAD
-      eventsNav.classList.add('hide');
-=======
       homePageDiv.classList.add('hide');
-      diaryNav.classList.add('hide');
->>>>>>> master
+      eventsNav.classList.add('hide');
     }
   });
 };
