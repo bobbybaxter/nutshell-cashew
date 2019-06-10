@@ -4,6 +4,7 @@ import messagesData from '../../helpers/data/messages-data';
 import smash from '../../helpers/smash';
 import usersData from '../../helpers/data/users-data';
 import util from '../../helpers/util';
+import './messages.scss';
 
 const messageViewBuilder = (arrayToPrint, currentUserId) => {
   let domString = '';
@@ -16,8 +17,8 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
     domString += '</div>';
     if (message.uid === currentUserId) {
       domString += '<div class="col-3">';
-      domString += '<button class="edit-button">Edit</button>';
-      domString += '<button class="delete-button">Delete</button>';
+      domString += '<button class="fas fa-pencil-alt edit-button" aria-label="Edit"></button>';
+      domString += '<button class="fas fa-times delete-button" aria-label="Delete"></button>';
       domString += '</div>';
     }
     domString += '</div>';
@@ -31,7 +32,8 @@ const initMessages = () => {
     .then((messages) => {
       usersData.getUsersArray()
         .then((users) => {
-          const finalMessages = smash.buildMessagesArray(users, messages);
+          const builtMessages = smash.buildMessagesArray(users, messages);
+          const finalMessages = builtMessages.sort((a, b) => Date.parse(a.timeStamp) - Date.parse(b.timeStamp));
           messageViewBuilder(finalMessages, currentUser);
         })
         .catch();

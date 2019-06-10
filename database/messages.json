@@ -1,32 +1,32 @@
 {
   "message1": {
     "message": "hey this is a test message",
-    "timeStamp": "June 1st 2019, 3:18:03 pm",
+    "timeStamp": "December 17, 2018 03:24:00",
     "uid": "anonymousUser1"
   },
   "message2": {
     "message": "hello this is another test message",
-    "timeStamp": "January 6th 2019, 3:18:03 pm",
+    "timeStamp": "February 18, 2019 15:35:10",
     "uid": "jihzYaHrghP1AnZYcBHXwHwwkOM2"
   },
   "message3": {
     "message": "stop writing test messages!",
-    "timeStamp": "May 31st 2019, 3:18:03 pm",
+    "timeStamp": "April 23, 2019 10:42:51",
     "uid": "anonymousUser2"
   },
   "message4": {
     "message": "how do i type a test message?",
-    "timeStamp": "June 2nd 2019, 3:18:03 pm",
+    "timeStamp": "March 30, 2019 11:27:14",
     "uid": "ftiAxJWY8LecCrNWRlgxtkbZa992"
   },
   "message5": {
     "message": "I love these test messages!",
-    "timeStamp": "May 21st 2019, 3:18:03 pm",
+    "timeStamp": "March 30, 2019 15:30:01",
     "uid": "F5iv5SelDnQX1zr5OiOXpX5jzzq1"
   },
   "message6": {
     "message": "My very own test message!",
-    "timeStamp": "May 1st 2019, 3:18:03 pm",
+    "timeStamp": "February 17, 2019 02:24:15",
     "uid": "yLlHNzV1bgaquYOPXnZIVvhEmbV2"
   }
 }
