@@ -16,6 +16,7 @@ const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
+const eventsNavbar = document.getElementById('navbar-button-events');
 
 const printHomePage = (userId) => {
   usersData.getUsersArray()
@@ -29,6 +30,7 @@ const printHomePage = (userId) => {
 
 const loginHomeView = (userId) => {
   homeNavbar.classList.remove('hide');
+  eventsNavbar.classList.remove('hide');
   authNavbar.classList.add('hide');
   logoutNavbar.classList.remove('hide');
   authDiv.classList.add('hide');
