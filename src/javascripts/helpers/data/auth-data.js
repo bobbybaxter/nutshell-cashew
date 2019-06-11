@@ -11,6 +11,7 @@ const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
 const logoutNavbar = document.getElementById('navbar-button-logout');
 const diaryNav = document.getElementById('navbar-button-diary');
+const eventsNav = document.getElementById('navbar-button-events');
 const newsNav = document.getElementById('navbar-button-news');
 const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
@@ -30,7 +31,6 @@ const printHomePage = (userId) => {
 
 const loginHomeView = (userId) => {
   homeNavbar.classList.remove('hide');
-  eventsNavbar.classList.remove('hide');
   authNavbar.classList.add('hide');
   logoutNavbar.classList.remove('hide');
   authDiv.classList.add('hide');
@@ -38,6 +38,7 @@ const loginHomeView = (userId) => {
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
   messagesNavBar.classList.remove('hide');
+  eventsNav.classList.remove('hide');
   newsNav.classList.remove('hide');
   printHomePage(userId);
 };
@@ -70,11 +71,12 @@ const checkLoginStatus = () => {
       authDiv.classList.remove('hide');
       diaryNav.classList.add('hide');
       homePageDiv.classList.add('hide');
-      diaryNav.classList.add('hide');
+      eventsNav.classList.add('hide');
+      newsNav.classList.add('hide');
     }
   });
 };
 
 export default {
-  checkLoginStatus,
+  checkLoginStatus
 };
