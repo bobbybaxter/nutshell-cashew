@@ -85,7 +85,7 @@ const saveNews = (e) => {
     title: document.getElementById('edit-title-input').value,
     uid: firebase.auth().currentUser.uid,
   };
-  const newsId = document.getElementsByClassName(`${$(e.target).closest('modal-body')}`);
+  const newsId = e.target.parentNode.previousElementSibling.id;
   newsData.editNewsArticle(newsId, newsObject)
     .then(() => {
       initNews(); // eslint-disable-line no-use-before-define
