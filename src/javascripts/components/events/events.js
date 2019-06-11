@@ -32,7 +32,7 @@ const printEvents = (events) => {
     domString += '<div class="card eventCards d-flex flex-row align-items-center justify-content-between shadow-sm mb-2">';
     domString += '<table class="table table-borderless table-sm">';
     domString += '<tr>';
-    domString += `<td class="p-0 event-name"><strong>${event.name}</strong></td>`;
+    domString += `<td class="p-0 event-name"><h2>${event.name}</h2></td>`;
     domString += `<td class="p-0 event-date font-weight-light px-2" rowspan="2">${event.date}</td>`;
     domString += '</tr>';
     domString += '<tr>';
