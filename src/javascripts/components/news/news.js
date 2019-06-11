@@ -11,7 +11,6 @@ const newsCardEvents = (e) => {
 };
 
 const newsCardBuilder = (newsArticles) => {
-  console.error(newsArticles);
   let domString = '';
   domString += '<div class="container">';
   domString += '<div class="row">';
