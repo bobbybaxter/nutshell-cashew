@@ -5,6 +5,7 @@ import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
+// import messagesFunctions from '../../components/messages/messages';
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
@@ -15,6 +16,7 @@ const newsNav = document.getElementById('navbar-button-news');
 const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
+const messagesNavBar = document.getElementById('navbar-button-messages');
 
 const printHomePage = (userId) => {
   usersData.getUsersArray()
@@ -34,6 +36,7 @@ const loginHomeView = (userId) => {
   userNameOpenButton.classList.add('hide');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
+  messagesNavBar.classList.remove('hide');
   eventsNav.classList.remove('hide');
   newsNav.classList.remove('hide');
   printHomePage(userId);
@@ -69,8 +72,11 @@ const checkLoginStatus = () => {
       homePageDiv.classList.add('hide');
       eventsNav.classList.add('hide');
       newsNav.classList.add('hide');
+      messagesNavBar.classList.add('hide');
     }
   });
 };
 
-export default { checkLoginStatus };
+export default {
+  checkLoginStatus,
+};
