@@ -8,14 +8,14 @@ const hideAll = () => {
   $('#userNameModalBtnDiv').addClass('hide');
   $('#homePageDiv').addClass('hide');
   $('.authed-diary').addClass('hide');
-  $('.events').addClass('hide');
+  $('.authed-events').addClass('hide');
   $('.authed-news').addClass('hide');
 };
 
 const showEvents = () => {
   hideAll();
   events.initEvents();
-  $('.events').removeClass('hide');
+  $('.authed-events').removeClass('hide');
 };
 
 const showDiary = () => {

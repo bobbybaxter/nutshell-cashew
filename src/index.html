@@ -21,6 +21,9 @@
           <button type="button" class="authed-news nav-link pr-3 btn btn-outline-dark col-12 hide add-entry" data-toggle="modal" data-target="#add-article-form">Add News Article</button>
         </li>
         <li class="nav-item text-nowrap">
+          <button type="button" class="authed-events nav-link pr-3 btn btn-outline-dark col-12 hide add-entry" data-toggle="modal" data-target="#add-event-form">Add Event</button>
+        </li>
+        <li class="nav-item text-nowrap">
           <button type="button" id="navbar-button-logout" class="nav-link btn btn-outline-dark col-12 hide">Logout</button>
         </li>
       </ul>
@@ -64,7 +67,7 @@
             <div id="diary-entries" class="d-flex flex-column"></div>
           </div>
 
-          <div id="eventsContainer" class="events p-5 hide">
+          <div id="eventsContainer" class="authed-events p-5 hide">
             <h1 class="text-center">Events</h1>
             <div id="events" class="d-flex flex-wrap flex-column"></div>
           </div>
@@ -99,6 +102,7 @@
         </div>
       </div>
 
+      <!-- add article modal -->
       <div class="modal" id="add-article-form">
         <div class="modal-dialog">
           <div class="modal-content rounded-0 border-0">
@@ -120,6 +124,28 @@
           </div>
         </div>
       </div>
+
+      <!-- add event modal -->
+      <div class="modal" id="add-event-form">
+          <div class="modal-dialog">
+            <div class="modal-content rounded-0 border-0">
+              <div class="modal-header border-0 pb-0">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <h1 class="display-4 m-auto">Add New Event</h1>
+              <div class="modal-body">
+                <input id="event-name-input" type="text" class="form-control my-3" placeholder="Event Name">
+                <input id="event-date-input" type="text" class="form-control mb-3" placeholder="Date">
+                <input id="event-location-input" type="text" class="form-control mb-3" placeholder="Location">
+              </div>
+              <div class="modal-footer justify-content-center border-0">
+                <button id="add-event" type="button" class="btn btn-dark rounded-0 px-4" data-dismiss="modal">Save Event</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
       <!-- user name modal -->
       <div class="modal fade" id="userNameModal" tabindex="-1" role="dialog" aria-labelledby="userNameModalLabel" aria-hidden="true">
