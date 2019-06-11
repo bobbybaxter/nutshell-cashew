@@ -72,6 +72,7 @@ const checkLoginStatus = () => {
       homePageDiv.classList.add('hide');
       eventsNav.classList.add('hide');
       newsNav.classList.add('hide');
+      messagesNavBar.classList.add('hide');
     }
   });
 };
