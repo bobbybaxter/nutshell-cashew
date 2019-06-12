@@ -59,7 +59,6 @@ const printEvents = (events) => {
 
 const initEvents = () => {
   $('#add-event').on('click', addEvent);
-  // document.getElementById('add-event').addEventListener('click', addEvent);
   const { uid } = firebase.auth().currentUser;
   eventsData.getEventsByUid(uid)
     .then(events => printEvents(events))
