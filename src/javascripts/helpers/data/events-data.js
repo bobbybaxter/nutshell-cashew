@@ -6,6 +6,8 @@ const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const addEvent = newEvent => axios.post(`${firebaseUrl}/events.json`, newEvent);
 
+const deleteEvent = eventId => axios.delete(`${firebaseUrl}/events/${eventId}.json`);
+
 const getEventsByUid = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/events.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
@@ -21,4 +23,4 @@ const getEventsByUid = uid => new Promise((resolve, reject) => {
 });
 
 
-export default { getEventsByUid, addEvent };
+export default { getEventsByUid, addEvent, deleteEvent };
