@@ -21,4 +21,7 @@ const addNews = newsObject => axios.post(`${firebaseUrl}/news.json`, newsObject)
 
 const deleteNews = newsId => axios.delete(`${firebaseUrl}/news/${newsId}.json`);
 
-export default { getNewsByUid, addNews, deleteNews };
+const editNewsArticle = (newsId, newsObj) => axios.put(`${firebaseUrl}/news/${newsId}.json`, newsObj);
+
+// eslint-disable-next-line object-curly-newline
+export default { getNewsByUid, addNews, deleteNews, editNewsArticle };

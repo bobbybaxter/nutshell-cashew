@@ -11,7 +11,6 @@ const newsCardEvents = (e) => {
 };
 
 const newsCardBuilder = (newsArticles) => {
-  console.error(newsArticles);
   let domString = '';
   domString += '<div class="container">';
   domString += '<div class="row">';
@@ -24,6 +23,7 @@ const newsCardBuilder = (newsArticles) => {
     domString += `<div>${newsArticle.synopsis}</div>`;
     domString += `<button id=${newsArticle.newsUrl} class="btn btn-warning news-article-link">View Article</button>`;
     domString += `<button id="delete.${newsArticle.id}" class="btn btn-danger delete-news-button">Delete Article</button>`;
+    domString += `<button id="edit.${newsArticle.id}" type="button" class="btn btn-dark rounded-0 px-4 edit-article-button" data-dismiss="modal">Edit News Article</button>`;
     domString += '</div>';
     domString += '</div>';
     domString += '</div>';
@@ -33,6 +33,7 @@ const newsCardBuilder = (newsArticles) => {
   util.printToDom('news-articles', domString);
   $('.news-article-link').click(newsCardEvents);
   $('.delete-news-button').click(deleteNews); // eslint-disable-line no-use-before-define
+  $('.edit-article-button').click(editArticle); // eslint-disable-line no-use-before-define
 };
 
 const addNewArticle = () => {
@@ -45,6 +46,10 @@ const addNewArticle = () => {
   };
   newsData.addNews(newsObject)
     .then(() => {
+      document.getElementById('article-date-input').value = '';
+      document.getElementById('article-url-input').value = '';
+      document.getElementById('article-synopsis-input').value = '';
+      document.getElementById('article-title-input').value = '';
       initNews(); // eslint-disable-line no-use-before-define
     });
 };
@@ -57,8 +62,42 @@ const deleteNews = (e) => {
     });
 };
 
+const editArticle = (e) => {
+  const newsId = e.target.id.split('.')[1];
+  const { uid } = firebase.auth().currentUser;
+  $('#edit-article-form').modal('show');
+  newsData.getNewsByUid(uid)
+    .then((news) => {
+      news.forEach((article) => {
+        if (article.id === newsId) {
+          document.getElementById('edit-title-input').value = article.title;
+          document.getElementById('edit-date-input').value = article.date;
+          document.getElementById('edit-synopsis-input').value = article.synopsis;
+          document.getElementById('edit-url-input').value = article.newsUrl;
+          document.getElementById('edit-url-input').parentNode.id = article.id;
+        }
+      });
+    });
+};
+
+const saveNews = (e) => {
+  const newsObject = {
+    date: document.getElementById('edit-date-input').value,
+    newsUrl: document.getElementById('edit-url-input').value,
+    synopsis: document.getElementById('edit-synopsis-input').value,
+    title: document.getElementById('edit-title-input').value,
+    uid: firebase.auth().currentUser.uid,
+  };
+  const newsId = e.target.parentNode.previousElementSibling.id;
+  newsData.editNewsArticle(newsId, newsObject)
+    .then(() => {
+      initNews(); // eslint-disable-line no-use-before-define
+    });
+};
+
 const initNews = () => {
   document.getElementById('add-news-article').addEventListener('click', addNewArticle);
+  document.getElementById('edit-news-article').addEventListener('click', saveNews);
   const { uid } = firebase.auth().currentUser;
   newsData.getNewsByUid(uid)
     .then((newsArticles) => {
