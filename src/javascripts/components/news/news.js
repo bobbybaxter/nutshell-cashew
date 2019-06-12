@@ -46,6 +46,10 @@ const addNewArticle = () => {
   };
   newsData.addNews(newsObject)
     .then(() => {
+      document.getElementById('article-date-input').value = '';
+      document.getElementById('article-url-input').value = '';
+      document.getElementById('article-synopsis-input').value = '';
+      document.getElementById('article-title-input').value = '';
       initNews(); // eslint-disable-line no-use-before-define
     });
 };
