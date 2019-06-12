@@ -26,6 +26,14 @@ const addEvent = () => {
     .catch(error => console.error(error));
 };
 
+const deleteEvent = (e) => {
+  const eventId = e.target.id;
+  console.error(eventId);
+  eventsData.deleteEvent(eventId)
+    .then(() => initEvents()) // eslint-disable-line no-use-before-define
+    .catch(err => console.error(err));
+};
+
 const printEvents = (events) => {
   let domString = '';
   events.forEach((event) => {
@@ -41,15 +49,17 @@ const printEvents = (events) => {
     domString += '</table>';
     domString += '<div class="d-flex flex-row">';
     domString += '<button class="btn btn-outline-dark eventEditBtn">Edit</button>';
-    domString += '<button class="btn btn-outline-dark eventDeleteBtn">Delete</button>';
+    domString += `<button id="${event.id}" class="btn btn-outline-dark eventDeleteBtn">Delete</button>`;
     domString += '</div>';
     domString += '</div>';
   });
   util.printToDom('events', domString);
+  $('.eventDeleteBtn').on('click', deleteEvent);
 };
 
 const initEvents = () => {
-  document.getElementById('add-event').addEventListener('click', addEvent);
+  $('#add-event').on('click', addEvent);
+  // document.getElementById('add-event').addEventListener('click', addEvent);
   const { uid } = firebase.auth().currentUser;
   eventsData.getEventsByUid(uid)
     .then(events => printEvents(events))
