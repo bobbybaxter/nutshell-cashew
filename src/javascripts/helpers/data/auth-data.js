@@ -17,6 +17,7 @@ const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
+const messagesDiv = document.getElementById('messagesPageDiv');
 
 const printHomePage = (userId) => {
   usersData.getUsersArray()
@@ -73,6 +74,7 @@ const checkLoginStatus = () => {
       eventsNav.classList.add('hide');
       newsNav.classList.add('hide');
       messagesNavBar.classList.add('hide');
+      messagesDiv.classList.add('hide');
     }
   });
 };
