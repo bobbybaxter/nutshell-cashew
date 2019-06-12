@@ -62,6 +62,7 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
 };
 
 const initMessages = () => {
+  document.getElementById('messagesPageDiv').classList.remove('hide');
   const currentUser = firebase.auth().currentUser.uid;
   messagesData.getMessagesArray()
     .then((messages) => {
