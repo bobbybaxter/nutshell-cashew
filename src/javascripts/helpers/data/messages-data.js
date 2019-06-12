@@ -18,6 +18,9 @@ const getMessagesArray = () => new Promise((resolve, reject) => {
     .catch(error => reject(error));
 });
 
+const addMessage = messageObject => axios.post(`${firebaseUrl}/messages.json`, messageObject);
+
 export default {
   getMessagesArray,
+  addMessage,
 };
