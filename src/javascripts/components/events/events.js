@@ -7,13 +7,10 @@ import eventsData from '../../helpers/data/events-data';
 import util from '../../helpers/util';
 
 const addEvent = () => {
-  const eventName = $('#event-name-input').val();
-  const eventDate = $('#event-date-input').val();
-  const eventLocation = $('#event-location-input').val();
   const newEvent = {
-    name: eventName,
-    date: eventDate,
-    location: eventLocation,
+    name: $('#event-name-input').val(),
+    date: $('#event-date-input').val(),
+    location: $('#event-location-input').val(),
     uid: firebase.auth().currentUser.uid,
   };
   eventsData.addEvent(newEvent)
@@ -52,13 +49,10 @@ const editEvent = (e) => {
 
 const saveEvent = (e) => {
   const eventId = $(e.target).parent().prev()[0].id;
-  const eventName = $('#edit-event-name').val();
-  const eventDate = $('#edit-event-date').val();
-  const eventLocation = $('#edit-event-location').val();
   const updatedEvent = {
-    name: eventName,
-    date: eventDate,
-    location: eventLocation,
+    name: $('#edit-event-name').val(),
+    date: $('#edit-event-date').val(),
+    location: $('#edit-event-location').val(),
     uid: firebase.auth().currentUser.uid,
   };
   eventsData.editEvent(eventId, updatedEvent)
@@ -69,6 +63,8 @@ const saveEvent = (e) => {
 const eventListeners = () => {
   $('.eventDeleteBtn').on('click', deleteEvent);
   $('.eventEditBtn').on('click', editEvent);
+  $('#add-event').off('click', addEvent).on('click', addEvent);
+  $('#save-event').off('click', saveEvent).on('click', saveEvent);
 };
 
 const printEvents = (events) => {
@@ -95,8 +91,6 @@ const printEvents = (events) => {
 };
 
 const initEvents = () => {
-  $('#add-event').on('click', addEvent);
-  $('#save-event').on('click', saveEvent);
   const { uid } = firebase.auth().currentUser;
   eventsData.getEventsByUid(uid)
     .then(events => printEvents(events))
