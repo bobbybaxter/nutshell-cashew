@@ -8,38 +8,37 @@ import diaryData from '../../helpers/data/diary-data';
 
 import './diary.scss';
 
-const addDiaryEntry = () => {
+const addDiaryEntry = (event) => {
+  const diaryId = event.target.value;
+
   const newEntry = {
     title: $('#diary-title-input').val(),
     date: $('#diary-date-input').val(),
     entryBody: $('#diary-entry-input').val(),
     uid: firebase.auth().currentUser.uid,
   };
-  diaryData.addDiaryEntry(newEntry)
-    .then(() => {
-      initDiary(); // eslint-disable-line no-use-before-define
-    })
-    .catch(error => console.error(error));
+
+  if (diaryId) {
+    diaryData.editDiaryEntry(newEntry, diaryId)
+      .then(() => {
+        initDiary(); // eslint-disable-line no-use-before-define
+      })
+      .catch(error => console.error(error));
+  } else {
+    diaryData.addDiaryEntry(newEntry)
+      .then(() => {
+        initDiary(); // eslint-disable-line no-use-before-define
+      })
+      .catch(error => console.error(error));
+  }
 };
 
 const prepareEditForm = (event) => {
   const entryId = event.target.dataset.value;
+  $('#add-diary-entry').val(entryId);
   $('#diary-title-input').val($(`#${entryId}-title`).html());
   $('#diary-date-input').val($(`#${entryId}-date`).html());
   $('#diary-entry-input').val($(`#${entryId}-entry`).html());
-
-  const adjustedEntry = {
-    title: $('#diary-title-input').val(),
-    date: $('#diary-date-input').val(),
-    entryBody: $('#diary-entry-input').val(),
-    uid: firebase.auth().currentUser.uid,
-  };
-
-  diaryData.editDiaryEntry(adjustedEntry)
-    .then(() => {
-      initDiary(); // eslint-disable-line no-use-before-define
-    })
-    .catch(error => console.error(error));
 };
 
 const attachButtonEvents = () => {
@@ -65,6 +64,7 @@ const writeDiaryEntries = (diaryEntries) => {
 };
 
 const clearForm = () => {
+  $('#add-diary-entry').val('');
   $('#diary-title-input').val('');
   $('#diary-date-input').val('');
   $('#diary-entry-input').val('');
