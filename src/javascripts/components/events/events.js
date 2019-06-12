@@ -27,14 +27,14 @@ const addEvent = () => {
 };
 
 const deleteEvent = (e) => {
-  const eventId = e.target.id.split('.')[1];
+  const eventId = e.target.id;
   eventsData.deleteEvent(eventId)
     .then(() => initEvents()) // eslint-disable-line no-use-before-define
     .catch(err => console.error(err));
 };
 
 const editEvent = (e) => {
-  const eventId = e.target.id.split('.')[1];
+  const eventId = e.target.id;
   const { uid } = firebase.auth().currentUser;
   $('#edit-event-form').modal('show');
   eventsData.getEventsByUid(uid)
@@ -85,8 +85,8 @@ const printEvents = (events) => {
     domString += '</tr>';
     domString += '</table>';
     domString += '<div class="d-flex flex-row">';
-    domString += `<button id="edit.${event.id}" class="btn btn-outline-dark eventEditBtn">Edit</button>`;
-    domString += `<button id="delete.${event.id}" class="btn btn-outline-dark eventDeleteBtn">Delete</button>`;
+    domString += `<button id="${event.id}" class="btn btn-outline-dark eventEditBtn">Edit</button>`;
+    domString += `<button id="${event.id}" class="btn btn-outline-dark eventDeleteBtn">Delete</button>`;
     domString += '</div>';
     domString += '</div>';
   });
