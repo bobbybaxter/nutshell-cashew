@@ -1,23 +1,28 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import axios from 'axios';
 
-// import util from '../../helpers/util';
-// import dashboardData from '../../helpers/data/dashboardData';
+const getDashboardTitles = () => new Promise((resolve, reject) => {
+  axios.get('../../database/base.json')
+    .then((results) => {
+      const dashboardTitlesJson = Object(results.data);
+      console.error(dashboardTitlesJson);
+      const dashboardTitles = [];
+      for (let i = 0; i < dashboardTitlesJson.length; i += 1) {
+        dashboardTitles.push(dashboardTitlesJson.i);
+        console.error('dashboard for loop', dashboardTitlesJson[i]);
+      }
+      // dashboardTitlesJson.forEach((dashboardTitle) => {
+      //   dashboardTitles.push(dashboardTitle);
+      // });
+      resolve(dashboardTitles);
+    })
+    .catch(error => reject(error));
+});
 
-import newsData from '../../helpers/data/newsData';
-
-// const dashboardBuilder = () => {
-//   dashboardData.getDashboardDataByUid()
-//     .then((dashboard) => {
-//       console.error(dashboard);
-//     });
-// };
 
 const dashboardBuilder = () => {
-  const { uid } = firebase.auth().currentUser;
-  newsData.getNewsByUid(uid)
-    .then((news) => {
-      console.error(news);
+  getDashboardTitles()
+    .then((dashboardTitles) => {
+      console.error(dashboardTitles);
     });
 };
 

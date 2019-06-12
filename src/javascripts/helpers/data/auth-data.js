@@ -5,7 +5,6 @@ import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
 import util from '../util';
-import dashboard from '../../components/dashboard/dashboard';
 // import messagesFunctions from '../../components/messages/messages';
 
 const homeNavbar = document.getElementById('navbar-button-home');
@@ -18,7 +17,7 @@ const authDiv = document.getElementById('auth');
 const userNameOpenButton = document.getElementById('userNameModalBtnDiv');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
-dashboard.dashboardBuilder();
+
 
 const printHomePage = (userId) => {
   usersData.getUsersArray()
