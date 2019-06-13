@@ -7,6 +7,8 @@ const addDiaryEntry = newEntry => axios.post(`${firebaseUrl}/diaryEntries.json`,
 
 const editDiaryEntry = (newEntry, entryId) => axios.put(`${firebaseUrl}/diaryEntries/${entryId}.json`, newEntry);
 
+const deleteDiaryEntry = entryId => axios.delete(`${firebaseUrl}/diaryEntries/${entryId}.json`);
+
 const getDiaryEntriesByUid = uid => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/diaryEntries.json?orderBy="uid"&equalTo="${uid}"`)
     .then((results) => {
@@ -21,4 +23,9 @@ const getDiaryEntriesByUid = uid => new Promise((resolve, reject) => {
     .catch(error => reject(error));
 });
 
-export default { getDiaryEntriesByUid, addDiaryEntry, editDiaryEntry };
+export default {
+  getDiaryEntriesByUid,
+  addDiaryEntry,
+  editDiaryEntry,
+  deleteDiaryEntry,
+};

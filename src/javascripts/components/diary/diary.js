@@ -33,6 +33,15 @@ const addDiaryEntry = (event) => {
   }
 };
 
+const deleteDiaryEntry = (event) => {
+  const entryId = event.target.dataset.value;
+  diaryData.deleteDiaryEntry(entryId)
+    .then(() => {
+      initDiary(); // eslint-disable-line no-use-before-define
+    })
+    .catch(error => console.error(error));
+};
+
 const prepareEditForm = (event) => {
   const entryId = event.target.dataset.value;
   $('#add-diary-entry').val(entryId);
@@ -43,6 +52,7 @@ const prepareEditForm = (event) => {
 
 const attachButtonEvents = () => {
   $('.edit').click(prepareEditForm);
+  $('.delete').click(deleteDiaryEntry);
 };
 
 const writeDiaryEntries = (diaryEntries) => {
@@ -55,7 +65,7 @@ const writeDiaryEntries = (diaryEntries) => {
     domString += `    <div id="${diaryEntry.id}-entry" class="my-3">${diaryEntry.entryBody}</div>`;
     domString += '    <div class="d-flex justify-content-start">';
     domString += `      <button data-value="${diaryEntry.id}" class="edit btn btn-outline-dark mr-1" data-toggle="modal" data-target="#add-entry-form">Edit</button>`;
-    domString += '      <button class="delete btn btn-outline-dark">Delete</button></div>';
+    domString += `      <button data-value="${diaryEntry.id}" class="delete btn btn-outline-dark">Delete</button></div>`;
     domString += '  </div>';
     domString += '</div>';
   });
