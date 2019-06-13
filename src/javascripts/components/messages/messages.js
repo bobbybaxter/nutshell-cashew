@@ -61,10 +61,23 @@ const repopulateMessageEdit = (e) => {
     .catch(error => console.error(error, 'could not get messages array in repopulateMessageEdit'));
 };
 
+const deleteMessage = (e) => {
+  const messageId = e.target.id.split('$')[1];
+  messagesData.deleteMessage(messageId)
+    .then(() => {
+      initMessages(); // eslint-disable-line no-use-before-define
+    })
+    .catch(error => console.error('could not delete message', error));
+};
+
 const addButtonEvents = () => {
   const editButtons = Array.from(document.getElementsByClassName('edit-button'));
   editButtons.forEach((editButton) => {
     editButton.addEventListener('click', repopulateMessageEdit);
+  });
+  const deleteButtons = Array.from(document.getElementsByClassName('delete-button'));
+  deleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener('click', deleteMessage);
   });
 };
 
