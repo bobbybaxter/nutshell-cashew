@@ -20,24 +20,65 @@ const submitMessage = (e) => {
     };
     messagesData.getMessagesArray()
       .then((messages) => {
-        const matchingMessage = messages.find(m => m.uid === newMessage.uid && m.timeStamp === newMessage.timeStamp);
+        const matchingMessage = messages.find(m => m.id === messageInput.dataset.value);
         if (matchingMessage) {
-          console.error('message found');
+          newMessage.timeStamp = matchingMessage.timeStamp;
+          messagesData.editMessage(messageInput.dataset.value, newMessage)
+            .then(() => {
+              messageInput.value = '';
+              messageInput.dataset.value = '';
+              initMessages(); // eslint-disable-line no-use-before-define
+            })
+            .catch(error => console.error(error, 'could not edit message'));
         } else {
           messagesData.addMessage(newMessage)
             .then(() => {
               messageInput.value = '';
               initMessages(); // eslint-disable-line no-use-before-define
             })
-            .catch();
+            .catch(error => console.error(error, 'could not add message'));
         }
       })
-      .catch();
+      .catch(error => console.error('could not get messages array in submitMessage', error));
   }
 };
 
 const addEvents = () => {
   document.getElementById('addMessageInput').addEventListener('keyup', submitMessage);
+};
+
+const repopulateMessageEdit = (e) => {
+  messagesData.getMessagesArray()
+    .then((messages) => {
+      const messageId = e.target.id.split('$')[1];
+      const messageEdit = document.getElementById('addMessageInput');
+      messageEdit.dataset.value = messageId;
+      const matchingMessage = messages.find(m => m.id === messageId);
+      if (matchingMessage) {
+        messageEdit.value = matchingMessage.message;
+      }
+    })
+    .catch(error => console.error(error, 'could not get messages array in repopulateMessageEdit'));
+};
+
+const deleteMessage = (e) => {
+  const messageId = e.target.id.split('$')[1];
+  messagesData.deleteMessage(messageId)
+    .then(() => {
+      initMessages(); // eslint-disable-line no-use-before-define
+    })
+    .catch(error => console.error('could not delete message', error));
+};
+
+const addButtonEvents = () => {
+  const editButtons = Array.from(document.getElementsByClassName('edit-button'));
+  editButtons.forEach((editButton) => {
+    editButton.addEventListener('click', repopulateMessageEdit);
+  });
+  const deleteButtons = Array.from(document.getElementsByClassName('delete-button'));
+  deleteButtons.forEach((deleteButton) => {
+    deleteButton.addEventListener('click', deleteMessage);
+  });
 };
 
 const messageViewBuilder = (arrayToPrint, currentUserId) => {
@@ -52,13 +93,14 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
     domString += '</div>';
     if (message.uid === currentUserId) {
       domString += '<div class="col-3">';
-      domString += '<button class="fas fa-pencil-alt edit-button" aria-label="Edit"></button>';
-      domString += '<button class="fas fa-times delete-button" aria-label="Delete"></button>';
+      domString += `<button id="edit$${message.id}" class="fas fa-pencil-alt edit-button" aria-label="Edit"></button>`;
+      domString += `<button id="delete$${message.id}" class="fas fa-times delete-button" aria-label="Delete"></button>`;
       domString += '</div>';
     }
     domString += '</div>';
   });
   util.printToDom('messagesContainer', domString);
+  addButtonEvents();
 };
 
 const initMessages = () => {
