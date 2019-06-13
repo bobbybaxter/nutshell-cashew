@@ -1,7 +1,8 @@
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+@import './dashboard_style.css';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '../javascripts/components/navbars/navbars.scss';
-@import '../javascripts/components/events//events.scss';
+@import '../javascripts/components/events/events.scss';
 
 body {
   background-color: aliceblue;
