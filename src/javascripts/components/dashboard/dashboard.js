@@ -10,7 +10,7 @@ const dashboardBuilder = (titles) => {
   titles.forEach((title) => {
     domString += '<div class="col-sm-12 col-md-6 col-lg-3">';
     domString += '<div class="card news-card">';
-    domString += `<h5>${title}</h5>`;
+    domString += `<h3>${title}</h3>`;
     domString += `<div id=${title}></div>`;
     domString += '</div>';
     domString += '</div>';
