@@ -42,7 +42,7 @@ const showMessages = () => {
 
 const showHome = () => {
   hideAll();
-  dashboard.dashNews();
+  dashboard.dashInit();
   $('#homePageDiv').removeClass('hide');
 };
 

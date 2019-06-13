@@ -1,73 +1,62 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import dashData from '../../helpers/data/dashboardData';
 
-import axios from 'axios';
 import util from '../../helpers/util';
-// import news from '../news/news';
-import newsData from '../../helpers/data/newsData';
-import eventData from '../../helpers/data/events-data';
 
-const getDashboardTitles = () => new Promise((resolve, reject) => {
-  axios.get('../../database/base.json')
-    .then((results) => {
-      const dashboardTitlesJson = Object.keys(results.data);
-      const dashboardTitles = [];
-      for (let i = 0; i < dashboardTitlesJson.length; i += 1) {
-        dashboardTitles.push(dashboardTitlesJson[i]);
-      }
-      resolve(dashboardTitles);
-    })
-    .catch(error => reject(error));
-});
 
 const dashboardBuilder = (titles) => {
-  getDashboardTitles()
+  let domString = '';
+  domString += '<div class="container">';
+  domString += '<div class="row">';
+  titles.forEach((title) => {
+    domString += '<div class="col-sm-12 col-md-6 col-lg-3">';
+    domString += '<div class="card news-card">';
+    domString += `<h5>${title}</h5>`;
+    domString += `<div id=${title}></div>`;
+    domString += '</div>';
+    domString += '</div>';
+  });
+  domString += '</div>';
+  domString += '</div>';
+  util.printToDom('homePageDiv', domString);
+};
+
+const dashInit = () => {
+  dashData.getDashboardTitles()
     .then((dashboardTitles) => {
-      let domString = '';
-      let domString2 = '';
-      domString += '<div class="container">';
-      domString += '<div class="row">';
-      for (let i = 0; i < dashboardTitles.length; i += 1) {
-        domString += '<div class="col-sm-12 col-md-6 col-lg-3">';
-        domString += '<div class="card news-card">';
-        domString += `<h5>${dashboardTitles[i]}</h5>`;
-        domString += `<div id=${dashboardTitles[i]}></div>`;
-        domString += '</div>';
-        domString += '</div>';
-      }
-      titles.forEach((title) => {
-        domString2 += `<p>${title}</p>`;
-      });
-      domString += '</div>';
-      domString += '</div>';
-      util.printToDom('homePageDiv', domString);
-      util.printToDom(titles, domString2);
+      dashboardBuilder(dashboardTitles);
+      dashData.dashNews()
+        .then((newsTitles) => {
+          let domString = '';
+          newsTitles.forEach((newsTitle) => {
+            domString += `<p>${newsTitle}</p>`;
+          });
+          util.printToDom('news', domString);
+        });
+      dashData.dashEvents()
+        .then((eventNames) => {
+          let domString = '';
+          eventNames.forEach((eventName) => {
+            domString += `<p>${eventName}</p>`;
+          });
+          util.printToDom('events', domString);
+        });
+      dashData.dashDiary()
+        .then((diaryTitles) => {
+          let domString = '';
+          diaryTitles.forEach((diaryTitle) => {
+            domString += `<p>${diaryTitle}</p>`;
+          });
+          util.printToDom('diaryEntries', domString);
+        });
+      dashData.dashUsers()
+        .then((userNames) => {
+          let domString = '';
+          userNames.forEach((userName) => {
+            domString += `<p>${userName}</p>`;
+          });
+          util.printToDom('users', domString);
+        });
     });
 };
 
-const dashEvents = () => {
-  const events = [];
-  const { uid } = firebase.auth().currentUser;
-  eventData.getEventsByUid(uid)
-    .then((eventList) => {
-      eventList.forEach((event) => {
-        events.push(event.name);
-      });
-      dashboardBuilder(events);
-    });
-};
-
-const dashNews = () => {
-  const news = [];
-  const { uid } = firebase.auth().currentUser;
-  newsData.getNewsByUid(uid)
-    .then((newsArticles) => {
-      newsArticles.forEach((newsArticle) => {
-        news.push(newsArticle.title);
-      });
-      dashboardBuilder(news);
-      dashEvents();
-    });
-};
-
-export default { dashNews };
+export default { dashInit };
