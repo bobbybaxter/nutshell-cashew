@@ -7,66 +7,44 @@ import usersData from '../../helpers/data/users-data';
 import util from '../../helpers/util';
 import './messages.scss';
 
-const submitMessage = (e, messageId) => new Promise((resolve, reject) => {
+const submitMessage = (e) => {
   e.preventDefault();
-  const messageInput = document.getElementById('addMessageInput');
-  const messageTimeStamp = new Date();
-  const currentUserId = firebase.auth().currentUser.uid;
-  const newMessage = {
-    uid: currentUserId,
-    timeStamp: messageTimeStamp,
-    message: messageInput.value,
-  };
-  messagesData.getMessagesArray()
-    .then((messages) => {
-      const matchingMessage = messages.find(m => m.id === messageId);
-      console.error(matchingMessage);
-      if (matchingMessage) {
-        newMessage.timeStamp = matchingMessage.timeStamp;
-        console.error('right conditional is firing');
-        messagesData.editMessage(messageId, newMessage)
-          .then(() => {
-            messageInput.value = '';
-            initMessages(); // eslint-disable-line no-use-before-define
-          })
-          .catch(error => console.error(error, 'could not edit message'));
-      } else {
-        messagesData.addMessage(newMessage)
-          .then(() => {
-            messageInput.value = '';
-            initMessages(); // eslint-disable-line no-use-before-define
-          })
-          .catch(error => console.error(error, 'could not add message'));
-      }
-      resolve(matchingMessage);
-    })
-    .catch(error => reject(error));
-});
-
-const addEvents = () => {
-  document.getElementById('addMessageInput').addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
-      submitMessage(e, 'noMessageId');
-    }
-  });
+  if (e.key === 'Enter') {
+    const messageInput = document.getElementById('addMessageInput');
+    const messageTimeStamp = new Date();
+    const currentUserId = firebase.auth().currentUser.uid;
+    const newMessage = {
+      uid: currentUserId,
+      timeStamp: messageTimeStamp,
+      message: messageInput.value,
+    };
+    messagesData.getMessagesArray()
+      .then((messages) => {
+        const matchingMessage = messages.find(m => m.id === messageInput.dataset.value);
+        if (matchingMessage) {
+          newMessage.timeStamp = matchingMessage.timeStamp;
+          messagesData.editMessage(messageInput.dataset.value, newMessage)
+            .then(() => {
+              messageInput.value = '';
+              messageInput.dataset.value = '';
+              initMessages(); // eslint-disable-line no-use-before-define
+            })
+            .catch(error => console.error(error, 'could not edit message'));
+        } else {
+          messagesData.addMessage(newMessage)
+            .then(() => {
+              messageInput.value = '';
+              initMessages(); // eslint-disable-line no-use-before-define
+            })
+            .catch(error => console.error(error, 'could not add message'));
+        }
+      })
+      .catch(error => console.error('could not get messages array in submitMessage', error));
+  }
 };
 
-const addEditEvents = (currentMessageId) => {
-  const messageEdit = document.getElementById('addMessageInput');
-  messageEdit.removeEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
-      submitMessage(e, 'noMessageId');
-    }
-  });
-  messageEdit.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
-      submitMessage(e, currentMessageId)
-        .then(() => {
-          addEvents();
-        })
-        .catch(error => console.error(error, 'could not do submit message'));
-    }
-  });
+const addEvents = () => {
+  document.getElementById('addMessageInput').addEventListener('keyup', submitMessage);
 };
 
 const repopulateMessageEdit = (e) => {
@@ -74,24 +52,10 @@ const repopulateMessageEdit = (e) => {
     .then((messages) => {
       const messageId = e.target.id.split('$')[1];
       const messageEdit = document.getElementById('addMessageInput');
+      messageEdit.dataset.value = messageId;
       const matchingMessage = messages.find(m => m.id === messageId);
       if (matchingMessage) {
         messageEdit.value = matchingMessage.message;
-        addEditEvents(messageId);
-        // messageEdit.removeEventListener('keyup', (e) => {
-        //   if (e.key === 'Enter') {
-        //     submitMessage(e, 'noMessageId');
-        //   }
-        // });
-        // messageEdit.addEventListener('keyup', (e) => {
-        //   if (e.key === 'Enter') {
-        //     submitMessage(e, messageId)
-        //       .then(() => {
-        //         addEvents();
-        //       })
-        //       .catch(error => console.error(error, 'could not do submit message'));
-        //   }
-        // });
       }
     })
     .catch(error => console.error(error, 'could not get messages array in repopulateMessageEdit'));
@@ -117,7 +81,7 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
     if (message.uid === currentUserId) {
       domString += '<div class="col-3">';
       domString += `<button id="edit$${message.id}" class="fas fa-pencil-alt edit-button" aria-label="Edit"></button>`;
-      domString += `<button id="edit$${message.id}" class="fas fa-times delete-button" aria-label="Delete"></button>`;
+      domString += `<button id="delete$${message.id}" class="fas fa-times delete-button" aria-label="Delete"></button>`;
       domString += '</div>';
     }
     domString += '</div>';
