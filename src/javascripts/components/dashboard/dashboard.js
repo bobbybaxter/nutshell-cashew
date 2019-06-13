@@ -1,4 +1,8 @@
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 import dashData from '../../helpers/data/dashboardData';
+import eventData from '../../helpers/data/events-data';
 
 import util from '../../helpers/util';
 
@@ -20,7 +24,14 @@ const dashboardBuilder = (titles) => {
   util.printToDom('homePageDiv', domString);
 };
 
+const arrayTest = () => {
+  const { uid } = firebase.auth().currentUser;
+  const eventsArray = eventData.getEventsByUid(uid);
+  console.error(eventsArray.data);
+};
+
 const dashInit = () => {
+  arrayTest();
   dashData.getDashboardTitles()
     .then((dashboardTitles) => {
       dashboardBuilder(dashboardTitles);

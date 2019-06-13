@@ -2,11 +2,14 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import axios from 'axios';
+import fbref from '../apiKeys.json';
 
-import newsData from './newsData';
+// import newsData from './newsData';
 import eventData from './events-data';
 import diaryData from './diary-data';
 import userData from './users-data';
+
+const firebaseUrl = fbref.firebaseKeys.databaseURL;
 
 const getDashboardTitles = () => new Promise((resolve, reject) => {
   axios.get('../../../database/base.json')
@@ -47,13 +50,16 @@ const dashEvents = () => new Promise((resolve, reject) => {
 });
 
 const dashNews = () => new Promise((resolve, reject) => {
-  const newsTitles = [];
+  let newsTitles = {};
   const { uid } = firebase.auth().currentUser;
-  newsData.getNewsByUid(uid)
-    .then((newsArticles) => {
-      newsArticles.forEach((newsArticle) => {
-        newsTitles.push(newsArticle.title);
-      });
+  axios.get(`${firebaseUrl}/news.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((results) => {
+      const newsArticles = results.data;
+      console.error(newsArticles);
+      for (let i = 0; i < newsArticles.length; i += 1) {
+        newsTitles += newsArticles.i;
+      }
+      console.error('news titles', newsTitles);
       resolve(newsTitles);
     })
     .catch(error => reject(error));
