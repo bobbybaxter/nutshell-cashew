@@ -47,7 +47,7 @@ const logout = () => {
 };
 
 const addUsername = () => {
-  $('#userNameModal').off('hidden.bs.modal', logout);
+  $('#userNameModal').off('hidden.bs.modal', logout); // removes sign out event listener on modal hide
   const userName = document.getElementById('userNameInput').value;
   if (userName) {
     const newUser = {
@@ -69,7 +69,7 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       sideNav.attachSideNavEvents();
-      $('#userNameModal').on('hidden.bs.modal', logout);
+      $('#userNameModal').on('hidden.bs.modal', logout); // adds event listener on modal close
       usersData.getUsersArray()
         .then((users) => {
           const matchingUser = users.find(u => u.uid === user.uid);
