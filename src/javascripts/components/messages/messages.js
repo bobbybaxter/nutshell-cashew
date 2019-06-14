@@ -1,3 +1,6 @@
+/* module handles functionality for messages, including full CRUD.
+Exports addEvents and InitMessages.
+addEvents is called on page load in main.js, and initMessages is called in sideNav module. */
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import moment from 'moment';
@@ -6,6 +9,15 @@ import smash from '../../helpers/smash';
 import usersData from '../../helpers/data/users-data';
 import util from '../../helpers/util';
 import './messages.scss';
+
+/* function handles actions for when Enter is hit in message edit at bottom of page.
+When Enter is hit, a new object is built with the current new Date, th ecurrent firebase user id, and the value currently int he message edit.
+Get messages from messages-data is then called.
+A conditional tests for whether one of the messages from the collection has an id which matches the dataset.value of the message edit.
+If so, the timestamp is updated to be the matching message's timestamp, and an edit message function from messages-data is called
+with the updated new message object and the editing message's id passed in.
+The page is then reprinted and the message edit's value emptied.
+If not, the new message object is added to the messages collectiona nd the edit is cleared and the page is reprinted. */
 
 const submitMessage = (e) => {
   e.preventDefault();
@@ -43,9 +55,16 @@ const submitMessage = (e) => {
   }
 };
 
+// function adds event listener on keyup to message edit
+
 const addEvents = () => {
   document.getElementById('addMessageInput').addEventListener('keyup', submitMessage);
 };
+
+/* function repopulates message edit at bottom of page with the message text selected for editing.
+Calls get messages function from messages-data.
+assigns editing message's id to dataset.value of message edit.
+Uses find to locate message object in messages array whose id matches the extracted id and places that message's text in the message edit. */
 
 const repopulateMessageEdit = (e) => {
   messagesData.getMessagesArray()
@@ -61,6 +80,9 @@ const repopulateMessageEdit = (e) => {
     .catch(error => console.error(error, 'could not get messages array in repopulateMessageEdit'));
 };
 
+/* message calls axios delete function from messages-data and passes in messageId extracted from the button clicked.
+After DEFAULT_ENCODING, reprints page using initMessages */
+
 const deleteMessage = (e) => {
   const messageId = e.target.id.split('$')[1];
   messagesData.deleteMessage(messageId)
@@ -69,6 +91,8 @@ const deleteMessage = (e) => {
     })
     .catch(error => console.error('could not delete message', error));
 };
+
+// function loops over edit and delete buttons (separately) and attaches event listeners to each button.
 
 const addButtonEvents = () => {
   const editButtons = Array.from(document.getElementsByClassName('edit-button'));
@@ -80,6 +104,13 @@ const addButtonEvents = () => {
     deleteButton.addEventListener('click', deleteMessage);
   });
 };
+
+/* function prints page and calls button event listeners.
+Builds domString which changes slightly based on whether the iterated message has a user id that matches the current firebase user's id.
+If so, adds edit and delete buttons.
+Otherwise, in all cases prints user name, timestamp,a nd message body.
+Uses momentjs to format time stamps.
+Prints to page and calls button event listener function. */
 
 const messageViewBuilder = (arrayToPrint, currentUserId) => {
   let domString = '';
@@ -103,6 +134,13 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
   addButtonEvents();
 };
 
+/* function initiates functionality when Messages navbar button is clicked.
+Calls get functions for messages and users arrays.
+Feeds resulting arrays into smash function which produces final array
+Sorts array by timeStamp parsed to date format.
+Passes sorted array into messageViewBuilder function call along with the current user's id.
+Thereby prints page and kicks off event listeners for buttons. */
+
 const initMessages = () => {
   document.getElementById('messagesPageDiv').classList.remove('hide');
   const currentUser = firebase.auth().currentUser.uid;
@@ -114,7 +152,7 @@ const initMessages = () => {
           const finalMessages = builtMessages.sort((a, b) => Date.parse(a.timeStamp) - Date.parse(b.timeStamp));
           messageViewBuilder(finalMessages, currentUser);
         })
-        .catch();
+        .catch(error => console.error('could not get users array in initMessages', error));
     })
     .catch(error => console.error(error, 'could not get messages array in initMessages'));
 };
