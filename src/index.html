@@ -46,28 +46,42 @@
           <a class="navbar-brand navbar-brand-lg" href="#">Cashew Outside</a>
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <button type="button" id="navbar-button-home" class="nav-link btn btn-outline-dark hide">Dashboard</button>
+              <li class="nav-item d-flex flex-row">
+                <button type="button" id="navbar-button-home" class="nav-link btn btn-outline-dark hide">
+                  <i class="fas fa-desktop fa-fw mr-2"></i>
+                  Dashboard
+                </button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-diary" class="nav-link btn btn-outline-dark hide">Diary</button>
+                <button type="button" id="navbar-button-diary" class="nav-link btn btn-outline-dark hide">
+                  <i class="fas fa-book fa-fw mr-2"></i>
+                  Diary
+                </button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-events" class="nav-link btn btn-outline-dark hide">Events</button>
+                <button type="button" id="navbar-button-events" class="nav-link btn btn-outline-dark hide">
+                  <i class="fas fa-calendar-alt fa-fw mr-2"></i>
+                  Events
+                </button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-news" class="nav-link btn btn-outline-dark hide">News</button>
+                <button type="button" id="navbar-button-news" class="nav-link btn btn-outline-dark hide">
+                  <i class="fas fa-newspaper fa-fw mr-2"></i>
+                  News
+                </button>
               </li>
               <li class="nav-item">
-                <button type="button" id="navbar-button-messages"
-                class="nav-link btn btn-outline-dark hide">Messages</button>
+                <button type="button" id="navbar-button-messages" class="nav-link btn btn-outline-dark hide">
+                  <i class="fas fa-comment fa-fw mr-2"></i>
+                  Messages
+                </button>
               </li>
             </ul>
           </div>
         </nav>
       </div>
         
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
         <!-- app container -->
         <div id="auth"></div>
 
@@ -78,26 +92,26 @@
         </div>
         
         <!-- individual components divs -->
-        <div class="hide" id="homePageDiv"></div>
+        <div id="homePageDiv" class="p-2 hide"></div>
         
-        <div id="diary" class="authed-diary p-5 hide">
+        <div id="diary" class="authed-diary p-2 hide">
           <div id="diary-entries" class="d-flex flex-column"></div>
         </div>
 
-        <div id="eventsContainer" class="authed-events p-5 hide">
+        <div id="eventsContainer" class="authed-events p-2 hide">
           <h1 class="text-center">Events</h1>
           <div id="events" class="d-flex flex-wrap flex-column"></div>
         </div>
 
-        <div id="news" class="authed-news hide">
+        <div id="news" class="authed-news p-2 hide">
           <div id="news-articles" class="d-flex flex-wrap"></div>
         </div>
 
-        <div id="diary" class="authed-diary p-5 hide">
+        <div id="diary" class="authed-diary p-2 hide">
           <div id="diary-entries" class="d-flex flex-column"></div>
         </div>
 
-        <div id="messagesPageDiv" class="hide">
+        <div id="messagesPageDiv" class="p-2 hide">
           <div class="row">
             <div class="col-9">
               <div id="messagesContainer" class="container"></div>
