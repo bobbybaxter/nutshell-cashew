@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import 'firebase/auth';
 
 import dashData from '../../helpers/data/dashboardData';
-import eventData from '../../helpers/data/events-data';
+// import eventData from '../../helpers/data/events-data';
 
 import util from '../../helpers/util';
 
@@ -24,49 +24,39 @@ const dashboardBuilder = (titles) => {
   util.printToDom('homePageDiv', domString);
 };
 
-const arrayTest = () => {
-  const { uid } = firebase.auth().currentUser;
-  const eventsArray = eventData.getEventsByUid(uid);
-  console.error(eventsArray.data);
-};
-
 const dashInit = () => {
-  arrayTest();
-  dashData.getDashboardTitles()
-    .then((dashboardTitles) => {
-      dashboardBuilder(dashboardTitles);
-      dashData.dashNews()
-        .then((newsTitles) => {
-          let domString = '';
-          newsTitles.forEach((newsTitle) => {
-            domString += `<p>${newsTitle}</p>`;
-          });
-          util.printToDom('news', domString);
-        });
-      dashData.dashEvents()
-        .then((eventNames) => {
-          let domString = '';
-          eventNames.forEach((eventName) => {
-            domString += `<p>${eventName}</p>`;
-          });
-          util.printToDom('events', domString);
-        });
-      dashData.dashDiary()
-        .then((diaryTitles) => {
-          let domString = '';
-          diaryTitles.forEach((diaryTitle) => {
-            domString += `<p>${diaryTitle}</p>`;
-          });
-          util.printToDom('diaryEntries', domString);
-        });
-      dashData.dashUsers()
-        .then((userNames) => {
-          let domString = '';
-          userNames.forEach((userName) => {
-            domString += `<p>${userName}</p>`;
-          });
-          util.printToDom('users', domString);
-        });
+  dashboardBuilder(dashData.getTitles());
+  dashData.dashNews()
+    .then((newsTitles) => {
+      let domString = '';
+      newsTitles.forEach((newsTitle) => {
+        domString += `<p>${newsTitle}</p>`;
+      });
+      util.printToDom('News', domString);
+    });
+  dashData.dashEvents()
+    .then((eventNames) => {
+      let domString = '';
+      eventNames.forEach((eventName) => {
+        domString += `<p>${eventName}</p>`;
+      });
+      util.printToDom('Events', domString);
+    });
+  dashData.dashDiary()
+    .then((diaryTitles) => {
+      let domString = '';
+      diaryTitles.forEach((diaryTitle) => {
+        domString += `<p>${diaryTitle}</p>`;
+      });
+      util.printToDom('Diary', domString);
+    });
+  dashData.dashUsers()
+    .then((userNames) => {
+      let domString = '';
+      userNames.forEach((userName) => {
+        domString += `<p>${userName}</p>`;
+      });
+      util.printToDom('Users', domString);
     });
 };
 

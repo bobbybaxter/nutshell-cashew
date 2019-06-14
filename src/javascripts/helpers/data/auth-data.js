@@ -4,7 +4,7 @@ import 'firebase/auth';
 import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
 import usersFunctions from '../../components/users/users';
-import util from '../util';
+import dashboard from '../../components/dashboard/dashboard';
 // import messagesFunctions from '../../components/messages/messages';
 
 const homeNavbar = document.getElementById('navbar-button-home');
@@ -20,12 +20,10 @@ const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
 
 
-const printHomePage = (userId) => {
+const printHomePage = () => {
   usersData.getUsersArray()
-    .then((users) => {
-      const matchingUser = users.find(u => u.uid === userId.uid);
-      const domString = `<h1>Welcome, ${matchingUser.userName}</h1>`;
-      util.printToDom('homePageDiv', domString);
+    .then(() => {
+      dashboard.dashInit();
     })
     .catch(error => console.error(error, 'could not get users array'));
 };
