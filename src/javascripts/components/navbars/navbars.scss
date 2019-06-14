@@ -42,6 +42,11 @@
       display: flex;
       flex-direction: row !important;
       justify-content: space-around;
+      
+    };
+
+    .w-100 {
+      width: auto !important;
     };
   };
   
