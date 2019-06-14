@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
+import dashboard from '../../components/dashboard/dashboard';
 
 const homeNavbar = document.getElementById('navbar-button-home');
 const authNavbar = document.getElementById('navbar-button-auth');
@@ -17,6 +18,14 @@ const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
 
+const printHomePage = () => {
+  usersData.getUsersArray()
+    .then(() => {
+      dashboard.dashInit();
+    })
+    .catch(error => console.error(error, 'could not get users array'));
+};
+
 const showOnLogin = () => {
   homeNavbar.classList.remove('hide');
   authNavbar.classList.add('hide');
@@ -27,6 +36,7 @@ const showOnLogin = () => {
   messagesNavBar.classList.remove('hide');
   eventsNav.classList.remove('hide');
   newsNav.classList.remove('hide');
+  printHomePage();
 };
 
 const hideOnLogoff = () => {

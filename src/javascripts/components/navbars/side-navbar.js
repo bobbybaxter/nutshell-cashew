@@ -3,6 +3,8 @@ import diary from '../diary/diary';
 import messages from '../messages/messages';
 import events from '../events/events';
 import news from '../news/news';
+import dashboard from '../dashboard/dashboard';
+
 
 const hideAll = () => {
   $('#auth').addClass('hide');
@@ -40,6 +42,7 @@ const showMessages = () => {
 
 const showHome = () => {
   hideAll();
+  dashboard.dashInit();
   $('#homePageDiv').removeClass('hide');
 };
 
