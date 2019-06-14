@@ -70,19 +70,19 @@ const eventListeners = () => {
 const printEvents = (events) => {
   let domString = '';
   events.forEach((event) => {
-    domString += '<div class="card eventCards d-flex flex-row align-items-center justify-content-between shadow-sm mb-2">';
+    domString += '<div class="card eventCards d-flex flex-row align-items-center justify-content-between shadow-sm mb-2 p-2">';
     domString += '<table class="table table-borderless table-sm">';
     domString += '<tr>';
-    domString += `<td class="p-0 event-name"><h2>${event.name}</h2></td>`;
-    domString += `<td class="p-0 event-date font-weight-light px-2" rowspan="2">${event.date}</td>`;
+    domString += `<td class="p-0 event-name card-title"><h4>${event.name}</h4></td>`;
+    domString += `<td class="p-0 font-weight-light px-2" rowspan="2">${event.date}</td>`;
     domString += '</tr>';
     domString += '<tr>';
-    domString += `<td class="p-0 event-loc">${event.location}</td>`;
+    domString += `<td class="p-0">${event.location}</td>`;
     domString += '</tr>';
     domString += '</table>';
     domString += '<div class="d-flex flex-row">';
-    domString += `<button id="${event.id}" class="btn btn-outline-dark eventEditBtn">Edit</button>`;
-    domString += `<button id="${event.id}" class="btn btn-outline-dark eventDeleteBtn">Delete</button>`;
+    domString += `<button id="${event.id}" class="btn-outline-dark eventEditBtn fas fa-pencil-alt mr-1" aria-label="Edit"></button>`;
+    domString += `<button id="${event.id}" class="btn-outline-dark eventDeleteBtn fas fa-times" aria-label="Delete"></button>`;
     domString += '</div>';
     domString += '</div>';
   });

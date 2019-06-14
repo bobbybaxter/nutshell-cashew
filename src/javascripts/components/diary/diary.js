@@ -58,14 +58,14 @@ const attachButtonEvents = () => {
 const writeDiaryEntries = (diaryEntries) => {
   let domString = '';
   diaryEntries.forEach((diaryEntry) => {
-    domString += `<div id="${diaryEntry.id}" class="media mb-5">`;
-    domString += '  <div class="media-body">';
-    domString += `    <h5 id="${diaryEntry.id}-title" class="mb-0">${diaryEntry.title}</h5>`;
-    domString += `    <div id="${diaryEntry.id}-date">${diaryEntry.date}</div>`;
+    domString += `<div id="${diaryEntry.id}" class="media card mb-4 shadow-sm">`;
+    domString += '  <div class="media-body card-body">';
+    domString += `    <h4 id="${diaryEntry.id}-title" class="card-title">${diaryEntry.title}</h4>`;
+    domString += `    <div id="${diaryEntry.id}-date" class="border-bottom font-weight-light">${diaryEntry.date}</div>`;
     domString += `    <div id="${diaryEntry.id}-entry" class="my-3">${diaryEntry.entryBody}</div>`;
-    domString += '    <div class="d-flex justify-content-start">';
-    domString += `      <button data-value="${diaryEntry.id}" class="edit btn btn-outline-dark mr-1" data-toggle="modal" data-target="#add-entry-form">Edit</button>`;
-    domString += `      <button data-value="${diaryEntry.id}" class="delete btn btn-outline-dark">Delete</button></div>`;
+    domString += '    <div class="d-flex justify-content-end">';
+    domString += `      <button data-value="${diaryEntry.id}" class="edit btn-outline-dark fas fa-pencil-alt mr-1" aria-label="Edit" data-toggle="modal" data-target="#add-entry-form"></button>`;
+    domString += `      <button data-value="${diaryEntry.id}" class="delete btn-outline-dark fas fa-times" aria-label="Delete"></button></div>`;
     domString += '  </div>';
     domString += '</div>';
   });

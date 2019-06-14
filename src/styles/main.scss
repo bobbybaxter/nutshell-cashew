@@ -4,10 +4,19 @@
 @import '../javascripts/components/navbars/navbars.scss';
 @import '../javascripts/components/events/events.scss';
 
-body {
-  background-color: aliceblue;
-}
-
 .hide {
   display: none;
+}
+
+body {
+  background-color: #f2f4f5;
+}
+
+#main-wrapper {
+  background-color: f2f4f5;
+  overflow: initial;
+}
+
+.card-body {
+  width: 100%;
 }
