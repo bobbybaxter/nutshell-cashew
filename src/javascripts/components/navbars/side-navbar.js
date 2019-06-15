@@ -5,6 +5,7 @@ import events from '../events/events';
 import news from '../news/news';
 import dashboard from '../dashboard/dashboard';
 
+import brand from '../../../assets/images/cashew-logo-dark.png';
 
 const hideAll = () => {
   $('#auth').addClass('hide');
@@ -58,6 +59,7 @@ const attachSideNavEvents = () => {
   $('#navbar-button-messages').click(showMessages);
   $('#navbar-button-home').click(showHome);
   $('#navbar-button-logout').click(showAuth);
+  $('#cashew-brand').css('content', `url(${brand})`);
 };
 
 export default { attachSideNavEvents };
