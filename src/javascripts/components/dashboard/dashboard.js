@@ -12,10 +12,10 @@ const dashboardBuilder = (titles) => {
   domString += '<div class="container">';
   domString += '<div class="row">';
   titles.forEach((title) => {
-    domString += '<div class="col-sm-12 col-md-6 col-lg-3">';
-    domString += '<div class="card news-card">';
-    domString += `<h3>${title}</h3>`;
-    domString += `<div id=${title}></div>`;
+    domString += '<div class="p-0 m-2 card dash-card shadow-sm">';
+    domString += '<div class="d-flex flex-column p-3 card-body news-card">';
+    domString += `<h3 class="card-header border">${title}</h3>`;
+    domString += `<div id=${title} class="card-body comment-widgets py-1 px-0"></div>`;
     domString += '</div>';
     domString += '</div>';
   });
@@ -30,7 +30,7 @@ const dashInit = () => {
     .then((newsTitles) => {
       let domString = '';
       newsTitles.forEach((newsTitle) => {
-        domString += `<p>${newsTitle}</p>`;
+        domString += `<p class="comment-row justify-content-center p-0">${newsTitle}</p>`;
       });
       util.printToDom('News', domString);
     });
@@ -38,7 +38,7 @@ const dashInit = () => {
     .then((eventNames) => {
       let domString = '';
       eventNames.forEach((eventName) => {
-        domString += `<p>${eventName}</p>`;
+        domString += `<p class="comment-row justify-content-center p-0">${eventName}</p>`;
       });
       util.printToDom('Events', domString);
     });
@@ -46,7 +46,7 @@ const dashInit = () => {
     .then((diaryTitles) => {
       let domString = '';
       diaryTitles.forEach((diaryTitle) => {
-        domString += `<p>${diaryTitle}</p>`;
+        domString += `<p class="comment-row justify-content-center p-0">${diaryTitle}</p>`;
       });
       util.printToDom('Diary', domString);
     });
@@ -54,7 +54,7 @@ const dashInit = () => {
     .then((userNames) => {
       let domString = '';
       userNames.forEach((userName) => {
-        domString += `<p>${userName}</p>`;
+        domString += `<p class="comment-row justify-content-center p-0">${userName}</p>`;
       });
       util.printToDom('Users', domString);
     });
