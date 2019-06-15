@@ -12,7 +12,7 @@ const signMeIn = () => {
 
 const authStringBuilder = () => {
   let domString = '';
-  domString += '<button id="google-auth" class="btn btn-danger">';
+  domString += '<button id="google-auth" class="btn btn-danger" aria-label="Google Sign In">';
   domString += `<img src=${googleImage}/>`;
   domString += '</button>';
   util.printToDom('auth', domString);
