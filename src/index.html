@@ -84,12 +84,6 @@
       <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
         <!-- app container -->
         <div id="auth"></div>
-
-        <!-- Start of user name modal div -->
-        <div id="userNameModalBtnDiv" class="hide">
-          <!-- Button trigger modal -->
-          <button type="button" id="userNameModalOpen" class="btn btn-primary" data-toggle="modal" data-target="#userNameModal">Create User Name</button>
-        </div>
         
         <!-- individual components divs -->
         <div id="homePageDiv" class="p-2 hide"></div>
@@ -250,26 +244,20 @@
       </div>
 
       <!-- user name modal -->
-      <div class="modal fade" id="userNameModal" tabindex="-1" role="dialog" aria-labelledby="userNameModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="userNameModalLabel">Create Your User Name</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+      <div class="modal" id="userNameModal">
+        <div class="modal-dialog">
+          <div class="modal-content rounded-0 border-0">
+            <div class="modal-header border-0 pb-0">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+                <i class="fas fa-times"></i>
               </button>
             </div>
+            <h1 class="display-4 m-auto" id="userNameModalLabel">Enter a Username</h1>
             <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="userNameInput">Create User Name</label>
-                  <input type="text" class="form-control" id="userNameInput" placeholder="user1234*5">
-                </div>
-              </form>
+              <input id="userNameInput" type="text" class="form-control my-3" placeholder="CashewEater69">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" id="saveUserNameBtn" class="btn btn-primary" data-dismiss="modal">Save User Name</button>
+            <div class="modal-footer justify-content-center border-0">
+              <button id="saveUserNameBtn" type="button" class="btn btn-dark rounded-0 px-4" data-dismiss="modal">Save User Name</button>
             </div>
           </div>
         </div>
