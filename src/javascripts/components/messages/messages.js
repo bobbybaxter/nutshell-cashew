@@ -133,7 +133,8 @@ const messageViewBuilder = (arrayToPrint, currentUserId) => {
       domString += '</div>';
     } else {
       domString += '<div class="message-block d-flex flex-column align-items-end ml-2">';
-      domString += `<p class="message-info">${formattedTimeStamp}</p>`;
+      domString += `<h3 class="m-0 message-name-right">${message.userName}</h3>`;
+      domString += `<p class="my-0 mr-0 ml-2 message-date font-weight-light text-muted">${formattedTimeStamp}</p>`;
       domString += '<div class="d-flex flex-row messageRow">';
       domString += `<p class="messageContent messageBubbleOut">${message.message}</p>`;
       domString += '<div class="d-flex flex-row">';
