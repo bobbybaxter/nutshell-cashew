@@ -84,7 +84,7 @@ const addButtonEvents = () => {
 
 // this made our scrollbox work in the chatbox project, but i can't see to get it to scroll here
 const scrollPosition = () => {
-  const container = $('.chatbox')[0];
+  const container = $('#messagesContainer')[0];
   const containerHeight = container.clientHeight;
   const contentHeight = container.scrollHeight;
   container.scrollTop = contentHeight - containerHeight;

@@ -21,6 +21,11 @@
   // border-radius: 25px;
   font-size: .9rem;
   padding: .9rem .5rem;
+  overflow-y: scroll;
+}
+
+#messagesContainer > :first-child {
+  margin-top: auto;
 }
 
 .chatbox > :first-child {
