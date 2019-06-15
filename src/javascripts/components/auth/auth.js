@@ -15,7 +15,7 @@ const authStringBuilder = () => {
   domString += '<div class="card-body text-center border bg-white shadow-sm align-self-center justify-self-center">';
   domString += '<h1 class="card-header border">Cashew Outside</h1>';
   domString += '<p class="my-2 text-muted">Please sign in</p>';
-  domString += '<button id="google-auth" class="btn btn-outline">';
+  domString += '<button id="google-auth" class="btn btn-outline" aria-label="Google Sign In">';
   domString += `<img src=${googleImage} style="width: 100%;"/>`;
   domString += '</button>';
   domString += '</div>';
