@@ -24,15 +24,15 @@ The project creates a user dashboard where the user can select a page, read thei
 * To redeploy, run `npm run deploy`  
 ## Authors  
 
-#### Emily DeWitt  
-To see more of Emily's work on Github, click [HERE!](https://github.com/emilykdewitt "Emily DeWitt's Github")  
+#### Bob Baxter  
+To see more ofBob's work on Github, click [HERE!](https://github.com/bobbybaxter "Bob Baxter's Github")  
 
-#### Woody Maddox  
-To see more of Woody's work on Github, click [HERE!](https://github.com/woodymaddox "Woody Maddox's Github")  
+#### Matt Gill  
+To see more ofMatt's work on Github, click [HERE!](https://github.com/mtgill "Matt Gill's Github")  
 
 #### Sarah Thorne  
 To see more of Sarah's work on Github, click [HERE!](https://github.com/sarahjulesthorne "Sarah Thorne's Github")  
 
-#### Keith Walker  
-To see more of Keith's work on Github, click [HERE!](https://github.com/KeithRWalker "Keith Walker's Github")  
+#### Samuel Trejo  
+To see more of Samuel's work on Github, click [HERE!](https://github.com/samueltrejo "Samuel Trejo's Github")  
 
