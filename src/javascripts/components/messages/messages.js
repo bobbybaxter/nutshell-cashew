@@ -105,14 +105,13 @@ const addButtonEvents = () => {
     deleteButton.addEventListener('click', deleteMessage);
   });
 };
-
-// this made our scrollbox work in the chatbox project, but i can't see to get it to scroll here
-// const scrollPosition = () => {
-//   const container = $('#messagesContainer')[0];
-//   const containerHeight = container.clientHeight;
-//   const contentHeight = container.scrollHeight;
-//   container.scrollTop = contentHeight - containerHeight;
-// };
+// function auto-scrolls user to last message
+const scrollPosition = () => {
+  const container = $('#messagesContainer')[0];
+  const containerHeight = container.clientHeight;
+  const contentHeight = container.scrollHeight;
+  container.scrollTop = contentHeight - containerHeight;
+};
 
 /* function prints page and calls button event listeners.
 Builds domString which changes slightly based on whether the iterated message has a user id that matches the current firebase user's id.
