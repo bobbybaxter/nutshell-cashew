@@ -85,6 +85,7 @@ const checkLoginStatus = () => {
           const matchingUser = users.find(u => u.uid === user.uid);
           if (matchingUser) {
             showOnLogin(user);
+            $('#username').html(matchingUser.userName);
           } else {
             authDiv.classList.add('hide');
             authNavbar.classList.add('hide');
