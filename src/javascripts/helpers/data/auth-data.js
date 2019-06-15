@@ -17,6 +17,7 @@ const authDiv = document.getElementById('auth');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
+const navUsername = document.getElementById('username-container');
 
 const printHomePage = () => {
   usersData.getUsersArray()
@@ -36,6 +37,8 @@ const showOnLogin = () => {
   messagesNavBar.classList.remove('hide');
   eventsNav.classList.remove('hide');
   newsNav.classList.remove('hide');
+  navUsername.classList.add('d-flex');
+  navUsername.classList.remove('hide');
   printHomePage();
 };
 
@@ -50,6 +53,8 @@ const hideOnLogoff = () => {
   newsNav.classList.add('hide');
   messagesNavBar.classList.add('hide');
   messagesDiv.classList.add('hide');
+  navUsername.classList.remove('d-flex');
+  navUsername.classList.add('hide');
 };
 
 const logout = () => {
