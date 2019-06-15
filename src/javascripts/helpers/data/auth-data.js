@@ -21,6 +21,8 @@ const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
 const navUsername = document.getElementById('username-container');
+const topNavbar = document.getElementById('navbar');
+const sideNavbar = document.getElementById('side-navbar');
 
 // function adds and removes class of hide to display and reveal various elements when user successfully logs in
 const showOnLogin = () => {
@@ -28,6 +30,7 @@ const showOnLogin = () => {
   authNavbar.classList.add('hide');
   logoutNavbar.classList.remove('hide');
   authDiv.classList.add('hide');
+  authDiv.classList.remove('d-flex');
   homePageDiv.classList.remove('hide');
   diaryNav.classList.remove('hide');
   messagesNavBar.classList.remove('hide');
@@ -36,6 +39,8 @@ const showOnLogin = () => {
   navUsername.classList.add('d-flex');
   navUsername.classList.remove('hide');
   dashboard.dashInit();
+  topNavbar.classList.remove('hide');
+  sideNavbar.classList.remove('hide');
 };
 
 // function adds and removes class of hide to display authentication elements and hide all other elements when user logs out
@@ -44,6 +49,7 @@ const hideOnLogoff = () => {
   authNavbar.classList.remove('hide');
   logoutNavbar.classList.add('hide');
   authDiv.classList.remove('hide');
+  authDiv.classList.add('d-flex');
   diaryNav.classList.add('hide');
   homePageDiv.classList.add('hide');
   eventsNav.classList.add('hide');
@@ -52,6 +58,8 @@ const hideOnLogoff = () => {
   messagesDiv.classList.add('hide');
   navUsername.classList.remove('d-flex');
   navUsername.classList.add('hide');
+  topNavbar.classList.add('hide');
+  sideNavbar.classList.add('hide');
 };
 
 // basic firebase log out function

@@ -1,1 +1,60 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
+
+#messagesPageDiv {
+  height: 85vh;
+  overflow: hidden;
+};
+
+.chatbox {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 63vh;
+  // border-radius: 25px;
+  overflow: auto;
+  background-color: white;
+};
+
+#messagesContainer {
+  width: 100%;
+  margin: 0px;
+  // border-radius: 25px;
+  font-size: .9rem;
+  padding: .9rem .5rem;
+  overflow-y: scroll;
+}
+
+#messagesContainer > :first-child {
+  margin-top: auto;
+}
+
+.chatbox > :first-child {
+  margin-top: auto;
+};
+
+.messageBubbleIn {
+  background-color: #E7E6EB;
+  border-radius: 5px;
+  padding: .3rem .7rem;
+}
+
+.messageBubbleOut {
+  color: white;
+  background-color: #1685f1;
+  border-radius: 5px;
+  padding: .2rem .5rem;
+}
+
+.messageContent {
+  margin: 1% 0;
+}
+
+.message-name {
+  font-size: .9rem;
+  font-weight: 500;
+  align-self: center;
+}
+
+.message-date {
+  font-size: .8rem;
+}

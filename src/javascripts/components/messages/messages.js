@@ -3,6 +3,7 @@ Exports addEvents and InitMessages.
 addEvents is called on page load in main.js, and initMessages is called in sideNav module. */
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import $ from 'jquery';
 import moment from 'moment';
 import messagesData from '../../helpers/data/messages-data';
 import smash from '../../helpers/smash';
@@ -105,33 +106,48 @@ const addButtonEvents = () => {
   });
 };
 
+// this made our scrollbox work in the chatbox project, but i can't see to get it to scroll here
+// const scrollPosition = () => {
+//   const container = $('#messagesContainer')[0];
+//   const containerHeight = container.clientHeight;
+//   const contentHeight = container.scrollHeight;
+//   container.scrollTop = contentHeight - containerHeight;
+// };
+
 /* function prints page and calls button event listeners.
 Builds domString which changes slightly based on whether the iterated message has a user id that matches the current firebase user's id.
 If so, adds edit and delete buttons.
 Otherwise, in all cases prints user name, timestamp,a nd message body.
 Uses momentjs to format time stamps.
 Prints to page and calls button event listener function. */
-
 const messageViewBuilder = (arrayToPrint, currentUserId) => {
   let domString = '';
   arrayToPrint.forEach((message) => {
     const formattedTimeStamp = moment(message.timeStamp).format('MMMM D, YYYY h:mm A');
-    domString += '<div class="row">';
-    domString += '<div class="col-9">';
-    domString += `<h4 class="w-100 text-center">${message.userName}</h4>`;
-    domString += `<p class="col-3">${formattedTimeStamp}</p>`;
-    domString += `<p class="col-6">${message.message}</p>`;
-    domString += '</div>';
-    if (message.uid === currentUserId) {
-      domString += '<div class="col-3">';
-      domString += `<button id="edit$${message.id}" class="fas fa-pencil-alt edit-button" aria-label="Edit"></button>`;
-      domString += `<button id="delete$${message.id}" class="fas fa-times delete-button" aria-label="Delete"></button>`;
+    if (message.uid !== currentUserId) {
+      domString += '<div class="message-block d-flex flex-column align-items-start mr-2">';
+      domString += '<div class="w-100 d-flex flex-row messageRow">';
+      domString += `<h3 class="m-0 message-name">${message.userName}</h3>`;
+      domString += `<p class="my-0 mr-0 ml-2 message-date font-weight-light text-muted">${formattedTimeStamp}</p>`;
+      domString += '</div>';
+      domString += `<p class="messageContent messageBubbleIn">${message.message}</p>`;
+      domString += '</div>';
+    } else {
+      domString += '<div class="message-block d-flex flex-column align-items-end ml-2">';
+      domString += `<p class="message-info">${formattedTimeStamp}</p>`;
+      domString += '<div class="d-flex flex-row messageRow">';
+      domString += `<p class="messageContent messageBubbleOut">${message.message}</p>`;
+      domString += '<div class="d-flex flex-row">';
+      domString += `<button id="edit$${message.id}" class="btn-outline-dark fas fa-pencil-alt edit-button" aria-label="Edit"></button>`;
+      domString += `<button id="delete$${message.id}" class="btn-outline-dark fas fa-times delete-button" aria-label="Delete"></button>`;
+      domString += '</div>';
+      domString += '</div>';
       domString += '</div>';
     }
-    domString += '</div>';
   });
   util.printToDom('messagesContainer', domString);
   addButtonEvents();
+  scrollPosition();
 };
 
 /* function initiates functionality when Messages navbar button is clicked.

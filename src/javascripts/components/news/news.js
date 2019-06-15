@@ -13,17 +13,22 @@ const newsCardEvents = (e) => {
 const newsCardBuilder = (newsArticles) => {
   let domString = '';
   domString += '<div class="container">';
-  domString += '<div class="row">';
+  domString += '<div class="row justify-content-around">';
   newsArticles.forEach((newsArticle) => {
-    domString += '<div id="news-card" class="col-sm-12 col-md-6 col-lg-3">';
-    domString += '<div class="card news-card">';
-    domString += `<div id=${newsArticle.id}>`;
-    domString += `<h5>${newsArticle.title}</h5>`;
-    domString += `<div>${newsArticle.date}</div>`;
-    domString += `<div>${newsArticle.synopsis}</div>`;
-    domString += `<button id=${newsArticle.newsUrl} class="btn btn-warning news-article-link">View Article</button>`;
-    domString += `<button id="delete.${newsArticle.id}" class="btn btn-danger delete-news-button">Delete Article</button>`;
-    domString += `<button id="edit.${newsArticle.id}" type="button" class="btn btn-dark rounded-0 px-4 edit-article-button" data-dismiss="modal">Edit News Article</button>`;
+    domString += '<div id="news-card" class="p-0 m-2 card col-sm-12 col-md-5 shadow-sm">';
+    domString += '<div class="d-flex flex-column p-3 card-body news-card">';
+    domString += `<div id=${newsArticle.id} class="h-100">`;
+    domString += `<h4 class="card-title">${newsArticle.title}</h4>`;
+    domString += `<div class="card-subtitle font-weight-light border-bottom mb-1">${newsArticle.date}</div>`;
+    domString += '<div id="summary" class="mb-2">';
+    domString += `<p class="collapse" id="collapse_${newsArticle.id}">${newsArticle.synopsis}</p>`;
+    domString += `<a class="collapsed" data-toggle="collapse" href="#collapse_${newsArticle.id}" aria-expanded="false" aria-controls="collapse_${newsArticle.id}"></a>`;
+    domString += '</div>';
+    domString += '</div>';
+    domString += '<div>';
+    domString += `<button id=${newsArticle.newsUrl} class="btn-outline-dark news-article-link fas fa-external-link-alt"></button>`;
+    domString += `<button id="edit.${newsArticle.id}" type="button" class="btn-outline-dark edit-article-button fas fa-pencil-alt mx-3" aria-label="Edit" data-dismiss="modal"></button>`;
+    domString += `<button id="delete.${newsArticle.id}" class="btn-outline-dark delete-news-button fas fa-times" aria-label="Delete"></button>`;
     domString += '</div>';
     domString += '</div>';
     domString += '</div>';
