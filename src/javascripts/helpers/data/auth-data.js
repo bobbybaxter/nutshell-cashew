@@ -22,13 +22,12 @@ const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
 const navUsername = document.getElementById('username-container');
 
-const printHomePage = () => {
-  usersData.getUsersArray()
-    .then(() => {
-      dashboard.dashInit();
-    })
-    .catch(error => console.error(error, 'could not get users array'));
-};
+// const printHomePage = () => {
+//   usersData.getUsersArray()
+//     .then(() => {
+//     })
+//     .catch(error => console.error(error, 'could not get users array'));
+// };
 
 // function adds and removes class of hide to display and reveal various elements when user successfully logs in
 const showOnLogin = () => {
@@ -43,7 +42,7 @@ const showOnLogin = () => {
   newsNav.classList.remove('hide');
   navUsername.classList.add('d-flex');
   navUsername.classList.remove('hide');
-  printHomePage();
+  dashboard.dashInit();
 };
 
 // function adds and removes class of hide to display authentication elements and hide all other elements when user logs out
