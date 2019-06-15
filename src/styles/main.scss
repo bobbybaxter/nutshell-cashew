@@ -16,10 +16,14 @@ body {
 }
 
 #main-wrapper {
-  background-color: f2f4f5;
+  background-color: #f2f4f5;
   overflow: initial;
 }
 
 .card-body {
   width: 100%;
+}
+
+#auth {
+  height: 100vh;
 }

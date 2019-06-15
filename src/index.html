@@ -11,11 +11,11 @@
   <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full" data-boxed-layout="full">
     
     <!-- top navbar -->
-    <nav id="navbar" class="navbar navbar-dark sticky-top position-sticky bg-dark flex-md-nowrap py-1 shadow top-navbar topbar">
+    <nav id="navbar" class="navbar navbar-dark sticky-top position-sticky bg-dark flex-md-nowrap py-1 shadow top-navbar topbar hide">
       <a class="navbar-brand navbar-brand-sm" href="#">Cashew Outside</a>
-      <div class="d-flex flex-row justify-content-center align-items-center">
-        <img src="assets/images/users/1.jpg" alt="user avatar" class="pro-pic rounded-circle" width="31" height="31">
-        <h4 class="ml-2 mr-0 mb-0 p-0">Username</h4>
+      <div id="username-container" class="hide d-flex flex-row justify-content-center align-items-center">
+        <img src="https://picsum.photos/id/237/200/300" alt="user avatar" class="pro-pic rounded-circle" width="40" height="40">
+        <h4 id="username" class="ml-2 mr-0 mb-0 p-0">Username</h4>
       </div>
       <ul class="navbar-nav flex-row px-3">
         <li class="nav-item text-nowrap">
@@ -31,7 +31,7 @@
           <button type="button" class="authed-events nav-link pr-3 btn btn-outline-dark col-12 hide add-entry" data-toggle="modal" data-target="#add-event-form">Add Event</button>
         </li>
         <li class="nav-item text-nowrap">
-          <button type="button" id="navbar-button-logout" class="nav-link btn btn-outline-dark col-12 hide">Logout</button>
+          <button type="button" id="navbar-button-logout" class="text-white nav-link btn btn-outline-dark col-12 hide">Logout</button>
         </li>
       </ul>
     </nav>
@@ -41,7 +41,7 @@
     <div class="container-fluid">
 
       <!-- side navbar -->
-      <div class="row">
+      <div id="side-navbar" class="row hide">
         <nav class="col-md-2 d-md-block sidebar">
           <a class="navbar-brand navbar-brand-lg cashew-brand p-0" href="#"></a>
           <div class="sidebar-sticky">
@@ -83,7 +83,7 @@
         
       <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
         <!-- app container -->
-        <div id="auth"></div>
+        <div id="auth" class="d-flex flex-row col-9"></div>
         
         <!-- individual components divs -->
         <div id="homePageDiv" class="p-2 pt-5 hide"></div>
@@ -104,25 +104,21 @@
           <div id="diary-entries" class="d-flex flex-column"></div>
         </div>
 
-        <div id="messagesPageDiv" class="px-2 pt-5 hide">
-          <div class="row">
-            <div class="col-9">
-              <div id="messagesContainer" class="container"></div>
-            </div>
-          
-            <div class="col-3">
-              <div id="messagesUserNameContainer" class="container"></div>
-            </div>
-<div class="col-12">
-
-  <div class="form-group">
-    <label for="addMessageInput">Enter Message</label>
-    <input type="text" class="form-control" id="addMessageInput" aria-describedby="Message Help" placeholder="Hi, I'm a message!">
-    <small id="Message Help" class="form-text text-muted">Hit enter to submit message</small>
-  </div>
-
-</div>
+        <div id="messagesPageDiv" class="column justify-content-between px-2 pt-5 hide">
+          <div class="chatbox">
+            <div id="messagesContainer" class="container d-flex flex-column justify-content-end shadow-sm"></div>
           </div>
+          
+          <!-- <div class="">
+            <div id="messagesUserNameContainer" class="container"></div>
+          </div> -->
+
+          <div id="messageInputDiv" class="mt-2 form-group">
+            <label for="addMessageInput">Enter Message</label>
+            <input type="text" class="form-control" id="addMessageInput" aria-describedby="Message Help" placeholder="Hi, I'm a message!">
+            <small id="Message Help" class="form-text text-muted">Hit enter to submit message</small>
+          </div>
+
         </div>
 
       </main>
