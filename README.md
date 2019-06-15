@@ -8,12 +8,12 @@ Tasks such as authentication, user name creation on first login, dashboard landi
 The project creates a user dashboard where the user can select a page, read their existing entries, add a new entry, edit and existing entry, or delete an existing entry.  
 
 ## Screenshots  
-![image of splash page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot5.png)
-![image of home page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot4.png)
-![image of diary page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot3.png)
-![image of events page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot2.png)
-![image of news page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot1.png)
-![image of messages page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/src/assets/images/screenshot6.png)
+![image of splash page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot1.png)
+![image of home page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot4.png)
+![image of diary page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot3.png)
+![image of events page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot2.png)
+![image of news page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot1.png)
+![image of messages page](https://raw.githubusercontent.com/nss-evening-cohort-9/nutshell-cashew/master/src/assets/images/screenshot6.png)
 
 ## Installation Instructions  
 * Clone down this repo  
