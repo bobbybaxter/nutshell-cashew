@@ -7,6 +7,7 @@ import $ from 'jquery';
 
 import sideNav from '../../components/navbars/side-navbar';
 import usersData from './users-data';
+import dashboard from '../../components/dashboard/dashboard';
 
 // variables
 const homeNavbar = document.getElementById('navbar-button-home');
@@ -19,6 +20,15 @@ const authDiv = document.getElementById('auth');
 const homePageDiv = document.getElementById('homePageDiv');
 const messagesNavBar = document.getElementById('navbar-button-messages');
 const messagesDiv = document.getElementById('messagesPageDiv');
+const navUsername = document.getElementById('username-container');
+
+const printHomePage = () => {
+  usersData.getUsersArray()
+    .then(() => {
+      dashboard.dashInit();
+    })
+    .catch(error => console.error(error, 'could not get users array'));
+};
 
 // function adds and removes class of hide to display and reveal various elements when user successfully logs in
 const showOnLogin = () => {
@@ -31,6 +41,9 @@ const showOnLogin = () => {
   messagesNavBar.classList.remove('hide');
   eventsNav.classList.remove('hide');
   newsNav.classList.remove('hide');
+  navUsername.classList.add('d-flex');
+  navUsername.classList.remove('hide');
+  printHomePage();
 };
 
 // function adds and removes class of hide to display authentication elements and hide all other elements when user logs out
@@ -45,6 +58,8 @@ const hideOnLogoff = () => {
   newsNav.classList.add('hide');
   messagesNavBar.classList.add('hide');
   messagesDiv.classList.add('hide');
+  navUsername.classList.remove('d-flex');
+  navUsername.classList.add('hide');
 };
 
 // basic firebase log out function
@@ -90,6 +105,7 @@ const checkLoginStatus = () => {
           const matchingUser = users.find(u => u.uid === user.uid);
           if (matchingUser) {
             showOnLogin(user);
+            $('#username').html(matchingUser.userName);
           } else {
             authDiv.classList.add('hide');
             authNavbar.classList.add('hide');
