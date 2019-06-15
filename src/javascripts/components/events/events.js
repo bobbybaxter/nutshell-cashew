@@ -74,10 +74,10 @@ const printEvents = (events) => {
     domString += '<table class="table table-borderless table-sm">';
     domString += '<tr>';
     domString += `<td class="p-0 event-name card-title"><h4>${event.name}</h4></td>`;
-    domString += `<td class="p-0 font-weight-light px-2" rowspan="2">${event.date}</td>`;
+    domString += `<td class="text-center p-0 font-weight-light" rowspan="2">${event.date}</td>`;
     domString += '</tr>';
     domString += '<tr>';
-    domString += `<td class="p-0">${event.location}</td>`;
+    domString += `<td class="p-0 card-subtitle">${event.location}</td>`;
     domString += '</tr>';
     domString += '</table>';
     domString += '<div class="d-flex flex-row">';

@@ -16,10 +16,10 @@ const newsCardBuilder = (newsArticles) => {
   domString += '<div class="row justify-content-around">';
   newsArticles.forEach((newsArticle) => {
     domString += '<div id="news-card" class="p-0 m-2 card col-sm-12 col-md-5 shadow-sm">';
-    domString += '<div class="d-flex flex-column align-items center p-3 card-body news-card">';
+    domString += '<div class="d-flex flex-column p-3 card-body news-card">';
     domString += `<div id=${newsArticle.id} class="h-100">`;
     domString += `<h4 class="card-title">${newsArticle.title}</h4>`;
-    domString += `<div class="font-weight-light border-bottom mb-1">${newsArticle.date}</div>`;
+    domString += `<div class="card-subtitle font-weight-light border-bottom mb-1">${newsArticle.date}</div>`;
     domString += '<div id="summary" class="mb-2">';
     domString += `<p class="collapse" id="collapse_${newsArticle.id}">${newsArticle.synopsis}</p>`;
     domString += `<a class="collapsed" data-toggle="collapse" href="#collapse_${newsArticle.id}" aria-expanded="false" aria-controls="collapse_${newsArticle.id}"></a>`;

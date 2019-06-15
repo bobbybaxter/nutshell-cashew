@@ -61,7 +61,7 @@ const writeDiaryEntries = (diaryEntries) => {
     domString += `<div id="${diaryEntry.id}" class="media card mb-4 shadow-sm">`;
     domString += '  <div class="media-body card-body">';
     domString += `    <h4 id="${diaryEntry.id}-title" class="card-title">${diaryEntry.title}</h4>`;
-    domString += `    <div id="${diaryEntry.id}-date" class="border-bottom font-weight-light">${diaryEntry.date}</div>`;
+    domString += `    <div id="${diaryEntry.id}-date" class="card-subtitle border-bottom font-weight-light">${diaryEntry.date}</div>`;
     domString += `    <div id="${diaryEntry.id}-entry" class="my-3">${diaryEntry.entryBody}</div>`;
     domString += '    <div class="d-flex justify-content-end">';
     domString += `      <button data-value="${diaryEntry.id}" class="edit btn-outline-dark fas fa-pencil-alt mr-1" aria-label="Edit" data-toggle="modal" data-target="#add-entry-form"></button>`;
