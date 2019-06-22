@@ -1,5 +1,5 @@
 # Nutshell Cashew  
-nutshell-cashew created by GitHub Classroom
+https://nutshell-cashew.firebaseapp.com/
 
 ## Description  
 Nutshell Cashew is a group exercise in full CRUD with Firebase.  
@@ -31,10 +31,10 @@ The project creates a user dashboard where the user can select a page, read thei
 ## Authors  
 
 #### Bob Baxter  
-To see more ofBob's work on Github, click [HERE!](https://github.com/bobbybaxter "Bob Baxter's Github")  
+To see more of Bob's work on Github, click [HERE!](https://github.com/bobbybaxter "Bob Baxter's Github")  
 
 #### Matt Gill  
-To see more ofMatt's work on Github, click [HERE!](https://github.com/mtgill "Matt Gill's Github")  
+To see more of Matt's work on Github, click [HERE!](https://github.com/mtgill "Matt Gill's Github")  
 
 #### Sarah Thorne  
 To see more of Sarah's work on Github, click [HERE!](https://github.com/sarahjulesthorne "Sarah Thorne's Github")  
